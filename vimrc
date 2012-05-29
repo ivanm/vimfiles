@@ -33,7 +33,6 @@ let g:Powerline_symbols = 'fancy'
 au InsertEnter * set cursorline
 au InsertLeave * set nocursorline 
 
-
 " NO Folding
 """"""""""""""""""""""
 set nofoldenable 
@@ -105,12 +104,11 @@ if &t_Co >= 256 || has('gui_running')
       set guioptions-=r
       set guioptions-=l
       set transparency=1
-      
       set guifont=Monaco:h10
       set guifont=Inconsolata:h12
     endif
 
-    " Peferences for Gvim only
+    " Preferences for Gvim only
     """"""""""""""""""""""
     if has('gui_gtk')
       "set lines=70 columns=500
@@ -120,7 +118,6 @@ if &t_Co >= 256 || has('gui_running')
       set guioptions-=L
       set guioptions-=r
       set guioptions-=l
-      
       set gfn=Monospace\ 9
       "set gfn=Inconsolata\ 10
       set gfn=DejaVu\ Sans\ Mono\ 9 
@@ -260,7 +257,6 @@ nmap <F6> :set hls! <CR>
 " hit '/' highlights then enter search mode
 nnoremap / :set hlsearch<CR>/
 
-
 " F7 Available
 """""""""""""""""""""""
 " F8 Available
@@ -269,7 +265,6 @@ nnoremap / :set hlsearch<CR>/
 """""""""""""""""""""""
 " F10 Available
 """""""""""""""""""""""
-
 " F11 - Fast Mouse Toggle
 """""""""""""""""""""""
 nnoremap <F11> :call ToggleMouse()<CR>

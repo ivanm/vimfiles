@@ -6,7 +6,7 @@ Use it at your own risk.
 ::
 
   cd ~
-  git clone http://github.com/username/dotvim.git ~/.vim
+  git clone https://ivanm@github.com/ivanm/dotfiles.git ~/.vim
   ln -s ~/.vim/vimrc ~/.vimrc
   cd ~/.vim
   git submodule init

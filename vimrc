@@ -79,8 +79,9 @@ if &t_Co >= 256 || has('gui_running')
   " Preferences por TERM
   " You may need CSAproxto load some colorschemes 
   """"""""""""""""""""""
+	" colorscheme wombat256
   " colorscheme nightsky
-  colorscheme twilight
+	colorscheme twilight
   " colorscheme ps_color
   " colorscheme jellybeans 
   

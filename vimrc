@@ -71,9 +71,9 @@ set hidden
 "Force 256
 "set t_Co=256
 
-" ////////////////////
-"   GUI/TERM  configs 
-" ///////////////////
+"////////////////////
+" GUI/TERM  configs 
+"///////////////////
 
 if &t_Co >= 256 || has('gui_running')  
 
@@ -129,10 +129,9 @@ if &t_Co >= 256 || has('gui_running')
 
 endif 
 
-" ////////////////////
-"   Shortcuts 
-" ///////////////////
-"
+"////////////////////
+"  Shortcuts 
+"///////////////////
 
 " Press ee to open current dir
 """"""""""""""""""""""
@@ -210,9 +209,9 @@ inoremap <C-S> <C-O>:w<CR>
 let g:syntastic_loc_list_height=3
 let g:syntastic_auto_loc_list=1
 
-" ////////////////////
-"   Function keys 
-" ///////////////////
+"////////////////////
+" Function keys 
+"///////////////////
 
 "F1 - Help
 """""""""""""""""""""""

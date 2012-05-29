@@ -1,4 +1,4 @@
-dotfiles
+VIM Dotfiles
 ========
 
-dotfiles
+Use it at your own risk.

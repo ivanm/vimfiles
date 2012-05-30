@@ -26,6 +26,15 @@ let mapleader=","
 set mouse=a
 set switchbuf=usetab
 set laststatus=2
+
+" NERDTree settings
+""""""""""""""""""""""
+let NERDTreeDirArrows=1
+let NERDTreeShowHidden=1
+
+" Powerline settings
+""""""""""""""""""""""
+"let g:Powerline_symbols = 'compatible'
 let g:Powerline_symbols = 'fancy'
 
 " Set tip when inserting

@@ -27,15 +27,15 @@ set mouse=a
 set switchbuf=usetab
 set laststatus=2
 
-" NERDTree settings
-""""""""""""""""""""""
-let NERDTreeDirArrows=1
-let NERDTreeShowHidden=1
-
 " Powerline settings
 """"""""""""""""""""""
 "let g:Powerline_symbols = 'compatible'
 let g:Powerline_symbols = 'fancy'
+
+" NERDTree Settings
+let NERDTreeDirArrows=1
+let NERDTreeShowHidden=1
+let NERDTreeIgnore=['\.svn$', '\~$', '.DS_Store']
 
 " Set tip when inserting
 """"""""""""""""""""""

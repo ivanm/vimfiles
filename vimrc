@@ -244,10 +244,10 @@ let g:tagbar_width = 30
 let g:tagbar_compact = 1
 let g:tagbar_singleclick = 1
 
-nnoremap <silent> <F5> :TagbarToggle<CR>
-inoremap <silent> <F5> <C-O>:TagbarToggle<CR>
-nnoremap <silent> <S-F5> :TagbarOpenAutoClose<CR>
-inoremap <silent> <S-F5> <C-O>:TagbarOpenAutoClose<CR>
+nnoremap <silent> <S-F5> :TagbarToggle<CR>
+inoremap <silent> <S-F5> <C-O>:TagbarToggle<CR>
+nnoremap <silent> <F5> :TagbarOpenAutoClose<CR>
+inoremap <silent> <F5> <C-O>:TagbarOpenAutoClose<CR>
 let g:tagbar_type_php = { 
 	    \ 'kinds' : [
 	        \ 'i:interfaces:0',

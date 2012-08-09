@@ -90,15 +90,17 @@ if &t_Co >= 256 || has('gui_running')
   """"""""""""""""""""""
 	" colorscheme wombat256
   " colorscheme nightsky
-	colorscheme twilight
+	" colorscheme twilight
   " colorscheme ps_color
   " colorscheme jellybeans 
-  
+  colorscheme hybrid
+
   " Preferences por GUI (MacVim & GVim)
   """"""""""""""""""""""
   if has('gui_running')
-    colorscheme twilight
+   	" colorscheme twilight
     " colorscheme jellybeans
+    colorscheme hybrid 
     set lines=60 columns=300
     set sessionoptions+=resize,winpos
     
@@ -164,6 +166,9 @@ nnoremap <C-A> ggVG
 """"""""""""""""""""""
 noremap <C-D> YP 
 
+" Comment
+" nnoremap <silent> <leader>- :TComment<CR>
+
 " Insert tabs wherever you are
 """""""""""""""""""""""
 nnoremap <Tab> i<Tab><ESC><right>
@@ -225,7 +230,9 @@ let g:syntastic_auto_loc_list=1
 
 " F2 - Syntastic
 """""""""""""""""""""""
-inoremap <F2> <C-N>
+nnoremap <silent> <C-K> :TComment<CR>
+vnoremap <C-K> :TCommentBlock<CR>
+inoremap <C-K> <C-O>:TComment<CR>
 
 " F3 - Indent guides
 """""""""""""""""""""""

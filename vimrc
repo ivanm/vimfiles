@@ -116,8 +116,8 @@ if &t_Co >= 256 || has('gui_running')
       set guioptions-=r
       set guioptions-=l
       set transparency=1
-      set guifont=Monaco:h10
-      set guifont=Inconsolata:h12
+      "set guifont=Monaco:h10
+      set guifont=Anonymous\ Pro:h12
     endif
 
     " Preferences for Gvim only
@@ -231,7 +231,7 @@ let g:syntastic_auto_loc_list=1
 " F2 - Syntastic
 """""""""""""""""""""""
 nnoremap <silent> <C-K> :TComment<CR>
-vnoremap <C-K> :TCommentBlock<CR>
+vnoremap <C-K> :TComment<CR>
 inoremap <C-K> <C-O>:TComment<CR>
 
 " F3 - Indent guides

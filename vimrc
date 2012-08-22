@@ -36,6 +36,9 @@ let g:Powerline_symbols = 'fancy'
 let NERDTreeDirArrows=1
 let NERDTreeShowHidden=1
 let NERDTreeIgnore=['\.svn$', '\~$', '.DS_Store']
+let g:NERDTreeMapJumpPrevSibling = ''
+let g:NERDTreeMapJumpNextSibling = ''
+
 
 " Set tip when inserting
 """"""""""""""""""""""
@@ -109,6 +112,7 @@ if &t_Co >= 256 || has('gui_running')
     " Preferences for MacVim only
     """"""""""""""""""""""
     if has('gui_macvim')
+		  let macvim_skip_cmd_opt_movement = 1
       set clipboard-=unnamed
       "set lines=60 columns=300
       set vb
@@ -182,8 +186,10 @@ inoremap <S-Tab> <C-O><<
 " Tabbing shortcuts
 """""""""""""""""""""""
 nnoremap <C-T> :tabnew<CR>:e .<CR>
-nnoremap <C-B> :tabprev<CR>
-nnoremap <C-N> :tabnext<CR>
+"nnoremap <C-B> :tabprev<CR>
+"nnoremap <C-N> :tabnext<CR>
+noremap <C-K> :tabprev<CR>
+noremap <C-J> :tabnext<CR>
 
 " Divide shortcuts
 """""""""""""""""""""""
@@ -202,10 +208,10 @@ map <silent>= 10<C-W>=
 
 " Moving shortcuts
 """""""""""""""""""""""
-"map <Esc>[1;5C <C-right>
-"map <Esc>[1;5D <C-left>
-"map <Esc>[1;5A <C-up>
-"map <Esc>[1;5B <C-down>
+map <Esc>[1;5C <C-right>
+map <Esc>[1;5D <C-left>
+map <Esc>[1;5A <C-up>
+map <Esc>[1;5B <C-down>
 nnoremap <C-right> <C-W><right>
 nnoremap <C-left>  <C-W><left>
 nnoremap <C-up> <C-W><up>
@@ -232,9 +238,9 @@ let g:syntastic_auto_loc_list=1
 
 " F2 - Syntastic
 """""""""""""""""""""""
-nnoremap <silent> <C-K> :TComment<CR>
-vnoremap <C-K> :TComment<CR>
-inoremap <C-K> <C-O>:TComment<CR>
+nnoremap <silent> <C-L> :TComment<CR>
+vnoremap <C-L> :TComment<CR>
+inoremap <C-L> <C-O>:TComment<CR>
 
 " F3 - Indent guides
 """""""""""""""""""""""

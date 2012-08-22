@@ -41,6 +41,8 @@ let NERDTreeIgnore=['\.svn$', '\~$', '.DS_Store']
 """"""""""""""""""""""
 au InsertEnter * set cursorline
 au InsertLeave * set nocursorline 
+au InsertEnter * set cursorcolumn
+au InsertLeave * set nocursorcolumn
 
 " NO Folding
 """"""""""""""""""""""

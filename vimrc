@@ -113,7 +113,7 @@ if &t_Co >= 256 || has('gui_running')
     """"""""""""""""""""""
     if has('gui_macvim')
 		  let macvim_skip_cmd_opt_movement = 1
-      set clipboard-=unnamed
+      set clipboard=unnamed
       "set lines=60 columns=300
       set vb
       set guioptions-=T
@@ -154,9 +154,10 @@ endif
 
 " Copying uses common C-C and C-X shortcuts
 """"""""""""""""""""""
-set clipboard+=unnamed
+set clipboard=unnamed
 set history=500
 nnoremap dd "_dd 
+nnoremap x "_x
 nnoremap <C-C> "+Y
 vnoremap <C-C> "+y
 nnoremap <C-X> "+dd
@@ -166,7 +167,7 @@ inoremap <C-V> <left><C-O>"+p
 
 " Select All
 """"""""""""""""""""""
-nnoremap <C-A> ggVG
+nnoremap <leader>a ggVG
 
 " Duplicate
 """"""""""""""""""""""
@@ -193,10 +194,20 @@ noremap <C-J> :tabnext<CR>
 
 " Divide shortcuts
 """""""""""""""""""""""
-nnoremap <leader><right> :botright vnew .<CR>
-nnoremap <leader><left>  :topleft  vnew .<CR>
-nnoremap <leader><up> :topleft  new .<CR>
-nnoremap <leader><down>  :botright new .<CR>
+nnoremap <leader><right> :rightbelow vnew .<CR>
+nnoremap <leader><left>  :leftabove  vnew .<CR>
+nnoremap <leader><up> :leftabove  new .<CR>
+nnoremap <leader><down>  :rightbelow new .<CR>
+
+nnoremap <leader>,<right> :Vexplore!<CR>
+nnoremap <leader>,<left> :Vexplore<CR>
+nnoremap <leader>,<up> :Hexplore!<CR>
+nnoremap <leader>,<down> :Hexplore<CR>
+
+" Explore
+"""""""""""""""""""""""
+nnoremap <leader>e :Ex<CR>
+
 
 "Resize shortcuts
 """""""""""""""""""""""
@@ -216,7 +227,7 @@ nnoremap <C-right> <C-W><right>
 nnoremap <C-left>  <C-W><left>
 nnoremap <C-up> <C-W><up>
 nnoremap <C-down>  <C-W><down>
-nnoremap <leader><leader> <C-W><C-W> 
+"nnoremap <leader><leader> <C-W><C-W> 
 
 " Saving shortcuts
 """""""""""""""""""""""
@@ -259,8 +270,8 @@ let g:tagbar_width = 30
 let g:tagbar_compact = 1
 let g:tagbar_singleclick = 1
 
-nnoremap <silent> <S-F5> :TagbarToggle<CR>
-inoremap <silent> <S-F5> <C-O>:TagbarToggle<CR>
+" nnoremap <silent> <F5> :TagbarToggle<CR>
+" inoremap <silent> <F5> <C-O>:TagbarToggle<CR>
 nnoremap <silent> <F5> :TagbarOpenAutoClose<CR>
 inoremap <silent> <F5> <C-O>:TagbarOpenAutoClose<CR>
 let g:tagbar_type_php = { 

@@ -199,14 +199,14 @@ nnoremap <leader><left>  :leftabove  vnew .<CR>
 nnoremap <leader><up> :leftabove  new .<CR>
 nnoremap <leader><down>  :rightbelow new .<CR>
 
-nnoremap <leader>,<right> :Vexplore!<CR>
-nnoremap <leader>,<left> :Vexplore<CR>
-nnoremap <leader>,<up> :Hexplore!<CR>
-nnoremap <leader>,<down> :Hexplore<CR>
+nnoremap <leader><leader><right> :rightbelow vnew %:h<CR>
+nnoremap <leader><leader><left>  :leftabove  vnew %:h<CR>
+nnoremap <leader><leader><up> :leftabove  new %:h<CR>
+nnoremap <leader><leader><down>  :rightbelow new %:h<CR>
 
 " Explore
 """""""""""""""""""""""
-nnoremap <leader>e :Ex<CR>
+nnoremap <leader>e :e %:h<CR>
 
 
 "Resize shortcuts

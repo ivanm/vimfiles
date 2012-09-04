@@ -39,6 +39,10 @@ let NERDTreeIgnore=['\.svn$', '\~$', '.DS_Store']
 let g:NERDTreeMapJumpPrevSibling = ''
 let g:NERDTreeMapJumpNextSibling = ''
 
+"CtrlP Settings
+""""""""""""""""""""""
+let g:ctrlp_working_path_mode = ''
+let g:ctrlp_dont_split = 'nerdtree'
 
 " Set tip when inserting
 """"""""""""""""""""""

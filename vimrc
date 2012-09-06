@@ -103,6 +103,7 @@ if &t_Co >= 256 || has('gui_running')
   " colorscheme ps_color
   " colorscheme jellybeans 
   colorscheme hybrid
+	set ttimeoutlen=100
 
   " Preferences por GUI (MacVim & GVim)
   """"""""""""""""""""""

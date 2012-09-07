@@ -105,6 +105,7 @@ if &t_Co >= 256 || has('gui_running')
   " colorscheme jellybeans 
   colorscheme hybrid
 	set ttimeoutlen=100
+
   " Preferences por GUI (MacVim & GVim)
   """"""""""""""""""""""
   if has('gui_running')

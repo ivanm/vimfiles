@@ -26,6 +26,7 @@ let mapleader=","
 set mouse=a
 set switchbuf=usetab
 set laststatus=2
+nnoremap - :
 
 " Powerline settings
 """"""""""""""""""""""
@@ -103,7 +104,7 @@ if &t_Co >= 256 || has('gui_running')
   " colorscheme ps_color
   " colorscheme jellybeans 
   colorscheme hybrid
-
+	set ttimeoutlen=100
   " Preferences por GUI (MacVim & GVim)
   """"""""""""""""""""""
   if has('gui_running')
@@ -215,11 +216,8 @@ nnoremap <leader>e :e %:h<CR>
 
 "Resize shortcuts
 """""""""""""""""""""""
-map <silent>> 10<C-W>>
-map <silent>< 10<C-W><
-map <silent>- 10<C-W>-
-map <silent>+ 10<C-W>+
-map <silent>= 10<C-W>=
+map <leader>+ 10<C-W>>
+map <leader>- 10<C-W><
 
 " Moving shortcuts
 """""""""""""""""""""""

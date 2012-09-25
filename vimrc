@@ -11,6 +11,7 @@ call pathogen#infect()
 
 " General Preferences
 """"""""""""""""""""""
+filetype plugin indent on 
 set nocompatible 
 set background=dark 
 syntax on 
@@ -33,7 +34,22 @@ nnoremap - :
 "let g:Powerline_symbols = 'compatible'
 let g:Powerline_symbols = 'fancy'
 
+" SuperTab settings
+""""""""""""""""""""""
+let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
+" let g:SuperTabClosePreviewOnPopupClose=1
+" autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
+autocmd InsertLeave * if pumvisible() == 0|pclose|endif
+let g:SuperTabMappingForward ="<s-tab>"
+let g:SuperTabMappingBackward = 0
+autocmd FileType *
+	\ if &omnifunc != '' |
+	\   call SuperTabChain(&omnifunc, "<c-x><c-p>") |
+	\   call SuperTabSetDefaultCompletionType("<c-x><c-u>") |
+	\ endif
+
 " NERDTree Settings
+""""""""""""""""""""""
 let NERDTreeDirArrows=1
 let NERDTreeShowHidden=1
 let NERDTreeIgnore=['\.svn$', '\~$', '.DS_Store']
@@ -58,7 +74,6 @@ set nofoldenable
 
 " Indentation preferences
 """"""""""""""""""""""
-filetype plugin indent on 
 set smartindent
 set tabstop=2
 set shiftwidth=2

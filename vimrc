@@ -41,7 +41,7 @@ let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
 " autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
 autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 let g:SuperTabMappingForward ="<s-tab>"
-let g:SuperTabMappingBackward = 0
+let g:SuperTabMappingBackward = "<s-tab>-"
 autocmd FileType *
 	\ if &omnifunc != '' |
 	\   call SuperTabChain(&omnifunc, "<c-x><c-p>") |
@@ -113,12 +113,12 @@ if &t_Co >= 256 || has('gui_running')
   " Preferences por TERM
   " You may need CSAproxto load some colorschemes 
   """"""""""""""""""""""
-	" colorscheme wombat256
+	colorscheme wombat256
   " colorscheme nightsky
 	" colorscheme twilight
   " colorscheme ps_color
   " colorscheme jellybeans 
-  colorscheme hybrid
+  " colorscheme hybrid
 	set ttimeoutlen=100
 
   " Preferences por GUI (MacVim & GVim)
@@ -126,7 +126,8 @@ if &t_Co >= 256 || has('gui_running')
   if has('gui_running')
    	" colorscheme twilight
     " colorscheme jellybeans
-    colorscheme hybrid 
+    " colorscheme hybrid 
+    colorscheme wombat2 
     set lines=60 columns=300
     set sessionoptions+=resize,winpos
     

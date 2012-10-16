@@ -41,7 +41,7 @@ let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
 " autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
 autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 let g:SuperTabMappingForward ="<s-tab>"
-let g:SuperTabMappingBackward = "<s-tab>-"
+let g:SuperTabMappingBackward = "<s-c-tab>"
 autocmd FileType *
 	\ if &omnifunc != '' |
 	\   call SuperTabChain(&omnifunc, "<c-x><c-p>") |

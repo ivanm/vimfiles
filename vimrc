@@ -32,7 +32,7 @@ nnoremap - :
 " Powerline settings
 """"""""""""""""""""""
 "let g:Powerline_symbols = 'compatible'
-let g:Powerline_symbols = 'fancy'
+let g:Powerline_symbols = ''
 
 " SuperTab settings
 """"""""""""""""""""""
@@ -178,7 +178,9 @@ endif
 """"""""""""""""""""""
 set clipboard=unnamed
 set history=500
-nnoremap dd "_dd 
+nnoremap dd "_dd
+nnoremap d "_d
+vnoremap <Del> "_d
 nnoremap x "_x
 nnoremap <C-C> "+Y
 vnoremap <C-C> "+y

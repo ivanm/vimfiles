@@ -6,7 +6,7 @@
 
 " Pathogen 
 """"""""""""""""""""""
-" let g:pathogen_disabled=[""]
+let g:pathogen_disabled=["csapprox"]
 call pathogen#infect()
 
 " General Preferences
@@ -28,6 +28,7 @@ set mouse=a
 set switchbuf=usetab
 set laststatus=2
 nnoremap - :
+set completeopt=menu,preview
 
 " Powerline settings
 """"""""""""""""""""""
@@ -36,15 +37,18 @@ let g:Powerline_symbols = 'fancy'
 
 " SuperTab settings
 """"""""""""""""""""""
-let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
-autocmd InsertLeave * if pumvisible() == 0|pclose|endif
+let g:SuperTabDefaultCompletionType = "context"
 let g:SuperTabMappingForward ="<s-tab>"
 let g:SuperTabMappingBackward = "<s-c-tab>"
- autocmd FileType *
- 	\ if &omnifunc != '' |
- 	\   call SuperTabChain(&omnifunc, "<c-x><c-n>") |
- 	\   call SuperTabSetDefaultCompletionType("<c-x><c-u>") |
- 	\ endif
+
+inoremap <Nul> <C-X><C-O>
+inoremap <C-Space> <C-X><C-O>
+
+"autocmd FileType *
+" 	\ if &completefunc != '' |
+" 	\   call SuperTabChain(&completefunc, "<c-x><c-o>") |
+" 	\   call SuperTabSetDefaultCompletionType("<c-x><c-u>") |
+" 	\ endif
 
 " NERDTree Settings
 """"""""""""""""""""""
@@ -63,8 +67,8 @@ let g:ctrlp_dont_split = 'nerdtree'
 """"""""""""""""""""""
 au InsertEnter * set cursorline
 au InsertLeave * set nocursorline 
-au InsertEnter * set cursorcolumn
-au InsertLeave * set nocursorcolumn
+"au InsertEnter * set cursorcolumn
+"au InsertLeave * set nocursorcolumn
 
 " NO Folding
 """"""""""""""""""""""
@@ -82,8 +86,6 @@ set backspace=indent,eol,start
 " Cosmetics
 """"""""""""""""""""""
 set wildmenu
-"set wildmode=longest:list,full
-set wildmode=longest,list:longest
 set noerrorbells
 set novisualbell
 set t_vb=
@@ -103,6 +105,10 @@ set hidden
 "Force 256
 "set t_Co=256
 
+" Avoid Closing preview buffer
+""""""""""""""""""""""
+autocmd InsertLeave * if pumvisible() == 0|pclose|endif
+
 "////////////////////
 " GUI/TERM  configs 
 "///////////////////
@@ -112,11 +118,12 @@ if &t_Co >= 256 || has('gui_running')
   " Preferences por TERM
   " You may need CSAproxto load some colorschemes 
   """"""""""""""""""""""
-	colorscheme wombat256
+	" colorscheme wombat256
   " colorscheme nightsky
 	" colorscheme twilight
   " colorscheme ps_color
   " colorscheme jellybeans 
+  colorscheme distinguished
   " colorscheme hybrid
 	set ttimeoutlen=100
 
@@ -124,9 +131,10 @@ if &t_Co >= 256 || has('gui_running')
   """"""""""""""""""""""
   if has('gui_running')
    	" colorscheme twilight
-    " colorscheme jellybeans
+    "colorscheme jellybeans
+    colorscheme distinguished
     " colorscheme hybrid 
-    colorscheme wombat2 
+    " colorscheme wombat2 
     set lines=60 columns=300
     set sessionoptions+=resize,winpos
     
@@ -205,7 +213,7 @@ nnoremap <Tab> i<Tab><ESC><right>
 nnoremap <S-Tab> <<<left> 
 vnoremap <Tab> >gv 
 vnoremap <S-Tab> <gv 
-inoremap <S-Tab> <C-O><<
+"inoremap <S-Tab> <C-O><<
 
 " Tabbing shortcuts
 """""""""""""""""""""""
@@ -230,7 +238,6 @@ nnoremap <leader><leader><down>  :rightbelow new %:h<CR>
 " Explore
 """""""""""""""""""""""
 nnoremap <leader>e :e %:h<CR>
-
 
 "Resize shortcuts
 """""""""""""""""""""""

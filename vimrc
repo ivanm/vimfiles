@@ -83,6 +83,7 @@ set backspace=indent,eol,start
 """"""""""""""""""""""
 set wildmenu
 "set wildmode=longest:list,full
+set wildmode=longest,list:longest
 set noerrorbells
 set novisualbell
 set t_vb=

@@ -6,7 +6,7 @@
 
 " Pathogen 
 """"""""""""""""""""""
-"let g:pathogen_disabled=["csapprox"]
+let g:pathogen_disabled=["supertab"]
 call pathogen#infect()
 
 " General Preferences
@@ -32,21 +32,30 @@ nnoremap - :
 " Powerline settings
 """"""""""""""""""""""
 "let g:Powerline_symbols = 'compatible'
-let g:Powerline_symbols = ''
+let g:Powerline_symbols = 'fancy'
+
+" YouCompleteMe
+"""""""""""""""""""""
+let g:ycm_add_preview_to_completeopt = 1
+let g:ycm_min_num_of_chars_for_completion = 1
+" let g:ycm_key_select_completion 	= '<TAB>'
+" let g:ycm_key_previous_completion = '<S-C-TAB>'
+let g:ycm_key_invoke_completion 	= '<leader>.	'
+" let g:ycm_autoclose_preview_window_after_completion = 1
 
 " SuperTab settings
 """"""""""""""""""""""
-let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
+""let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
 " let g:SuperTabClosePreviewOnPopupClose=1
 " autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
-autocmd InsertLeave * if pumvisible() == 0|pclose|endif
-let g:SuperTabMappingForward ="<s-tab>"
-let g:SuperTabMappingBackward = "<s-c-tab>"
-autocmd FileType *
-	\ if &omnifunc != '' |
-	\   call SuperTabChain(&omnifunc, "<c-x><c-p>") |
-	\   call SuperTabSetDefaultCompletionType("<c-x><c-u>") |
-	\ endif
+""autocmd InsertLeave * if pumvisible() == 0|pclose|endif
+""let g:SuperTabMappingForward ="<s-tab>"
+""let g:SuperTabMappingBackward = "<s-c-tab>"
+""autocmd FileType *
+""	\ if &omnifunc != '' |
+""	\   call SuperTabChain(&omnifunc, "<c-x><c-p>") |
+""	\   call SuperTabSetDefaultCompletionType("<c-x><c-u>") |
+""	\ endif
 
 " NERDTree Settings
 """"""""""""""""""""""

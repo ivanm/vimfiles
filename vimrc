@@ -81,7 +81,7 @@ set tabstop=2
 set shiftwidth=2
 set backspace=indent,eol,start
 " Comment to use tabs. Uncomment to use spaces
-"set expandtab
+" set expandtab
 
 " Cosmetics
 """"""""""""""""""""""
@@ -123,7 +123,7 @@ if &t_Co >= 256 || has('gui_running')
 	" colorscheme twilight
   " colorscheme ps_color
   " colorscheme jellybeans 
-  colorscheme distinguished
+  " colorscheme distinguished
   " colorscheme hybrid
 	set ttimeoutlen=100
 
@@ -133,6 +133,8 @@ if &t_Co >= 256 || has('gui_running')
    	" colorscheme twilight
     "colorscheme jellybeans
     colorscheme distinguished
+    colorscheme distinguished
+		colorscheme chance-of-storm
     " colorscheme hybrid 
     " colorscheme wombat2 
     set lines=60 columns=300
@@ -150,7 +152,7 @@ if &t_Co >= 256 || has('gui_running')
       set guioptions-=L
       set guioptions-=r
       set guioptions-=l
-      set transparency=1
+      " set transparency=1
       "set guifont=Monaco:h10
       set guifont=Anonymous\ Pro:h12
     endif

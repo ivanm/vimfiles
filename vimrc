@@ -192,6 +192,7 @@ nnoremap dd "_dd
 nnoremap d "_d
 vnoremap <Del> "_d
 nnoremap x "_x
+nnoremap <Del> "_x
 nnoremap <C-C> "+Y
 vnoremap <C-C> "+y
 nnoremap <C-X> "+dd

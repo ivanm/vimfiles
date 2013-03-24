@@ -53,10 +53,12 @@ let NERDTreeDirArrows=1
 let NERDTreeShowHidden=1
 let NERDTreeIgnore=['\.svn$', '\~$', '.DS_Store']
 let NERDTreeHijackNetrw = 0
+let NERDTreeMinimalUI=1
+let NERDTreeChDirMode = 2
 let g:NERDTreeMapJumpPrevSibling = ''
 let g:NERDTreeMapJumpNextSibling = ''
-let g:nerdtree_tabs_open_on_gui_startup = 1
-let g:nerdtree_tabs_open_on_console_startup = 1
+let g:nerdtree_tabs_open_on_gui_startup = 0
+let g:nerdtree_tabs_open_on_console_startup = 0
 let g:netrw_banner = 0
 
 "CtrlP Settings
@@ -288,8 +290,8 @@ let g:syntastic_auto_loc_list=1
 """""""""""""""""""""""
 " nnoremap <silent> <F2> :NERDTreeTabsToggle<CR>
 " inoremap <silent> <F2> <C-O>:NERDTreeTabsToggle<CR>
-nnoremap <silent> <F2> :NERDTreeMirrorToggle<CR>
-inoremap <silent> <F2> <C-O>:NERDTreeMirrorToggle<CR>
+nnoremap <silent> <F2> :NERDTreeTabsToggle<CR>
+inoremap <silent> <F2> <C-O>:NERDTreeTabsToggle<CR>
 
 " F3 - TabMan
 """""""""""""""""""""""

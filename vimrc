@@ -3,7 +3,6 @@
 " Iván Mayoral
 " https://github.com/ivanm/dotfiles
 "
-
 " Pathogen 
 """"""""""""""""""""""
 let g:pathogen_disabled=["csapprox"]
@@ -19,9 +18,7 @@ set encoding=utf-8
 set ruler
 set nowrap 
 set ignorecase 
-"set autochdir "Dangerous!
 set number
-"set binary
 set showcmd
 let mapleader=","
 set mouse=a
@@ -55,8 +52,12 @@ inoremap <C-Space> <C-X><C-O>
 let NERDTreeDirArrows=1
 let NERDTreeShowHidden=1
 let NERDTreeIgnore=['\.svn$', '\~$', '.DS_Store']
+let NERDTreeHijackNetrw = 0
 let g:NERDTreeMapJumpPrevSibling = ''
 let g:NERDTreeMapJumpNextSibling = ''
+let g:nerdtree_tabs_open_on_gui_startup = 1
+let g:nerdtree_tabs_open_on_console_startup = 1
+let g:netrw_banner = 0
 
 "CtrlP Settings
 """"""""""""""""""""""
@@ -125,6 +126,7 @@ if &t_Co >= 256 || has('gui_running')
   " colorscheme jellybeans 
   " colorscheme distinguished
   " colorscheme hybrid
+	colorscheme t256
 	set ttimeoutlen=100
 
   " Preferences por GUI (MacVim & GVim)
@@ -132,8 +134,7 @@ if &t_Co >= 256 || has('gui_running')
   if has('gui_running')
    	" colorscheme twilight
     "colorscheme jellybeans
-    colorscheme distinguished
-    colorscheme distinguished
+    " colorscheme distinguished
 		colorscheme chance-of-storm
     " colorscheme hybrid 
     " colorscheme wombat2 
@@ -207,7 +208,10 @@ nnoremap <leader>a ggVG
 noremap <C-D> YP 
 
 " Comment
-" nnoremap <silent> <leader>- :TComment<CR>
+""""""""""""""""""""""
+nnoremap <silent> <C-L> :TComment<CR>
+vnoremap <C-L> :TComment<CR>
+inoremap <C-L> <C-O>:TComment<CR>
 
 " Insert tabs wherever you are
 """""""""""""""""""""""
@@ -227,19 +231,21 @@ noremap <C-J> :tabnext<CR>
 
 " Divide shortcuts
 """""""""""""""""""""""
-nnoremap <leader><right> :rightbelow vnew .<CR>
+nnoremap <leader><right> :rightbelow vnew .<CR><CR>
 nnoremap <leader><left>  :leftabove  vnew .<CR>
 nnoremap <leader><up> :leftabove  new .<CR>
 nnoremap <leader><down>  :rightbelow new .<CR>
 
-nnoremap <leader><leader><right> :rightbelow vnew %:h<CR>
+nnoremap <leader><leader><right> :rightbelow vnew %:h<CR><CR>
 nnoremap <leader><leader><left>  :leftabove  vnew %:h<CR>
 nnoremap <leader><leader><up> :leftabove  new %:h<CR>
 nnoremap <leader><leader><down>  :rightbelow new %:h<CR>
+nnoremap <leader><leader>t  :tabnew %:h<CR>
 
 " Explore
 """""""""""""""""""""""
 nnoremap <leader>e :e %:h<CR>
+nnoremap <leader>d :NERDTreeFocus<CR>
 
 "Resize shortcuts
 """""""""""""""""""""""
@@ -276,21 +282,22 @@ let g:syntastic_auto_loc_list=1
 "F1 - Help
 """""""""""""""""""""""
 
-" F2 - Syntastic
+" F2 -  NERDTreeToggle
 """""""""""""""""""""""
-nnoremap <silent> <C-L> :TComment<CR>
-vnoremap <C-L> :TComment<CR>
-inoremap <C-L> <C-O>:TComment<CR>
+" nnoremap <silent> <F2> :NERDTreeTabsToggle<CR>
+" inoremap <silent> <F2> <C-O>:NERDTreeTabsToggle<CR>
+nnoremap <silent> <F2> :NERDTreeMirrorToggle<CR>
+inoremap <silent> <F2> <C-O>:NERDTreeMirrorToggle<CR>
 
-" F3 - Indent guides
+" F3 - TabMan
+"""""""""""""""""""""""
+let g:tabman_toggle = '<F3>'
+
+" F4 - Indent guides
 """""""""""""""""""""""
 let g:indent_guides_guide_size = 2
 let g:indent_guides_start_level = 1
-nnoremap <silent> <F3> :IndentGuidesToggle<CR>
-
-" F4 - TabMan
-"""""""""""""""""""""""
-let g:tabman_toggle = '<F4>'
+nnoremap <silent> <F4> :IndentGuidesToggle<CR>
 
 " F5 - TagBar
 """""""""""""""""""""""

@@ -84,7 +84,7 @@ set tabstop=2
 set shiftwidth=2
 set backspace=indent,eol,start
 " Comment to use tabs. Uncomment to use spaces
-" set expandtab
+set expandtab
 
 " Cosmetics
 """"""""""""""""""""""

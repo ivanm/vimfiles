@@ -129,8 +129,8 @@ if &t_Co >= 256 || has('gui_running')
   " colorscheme distinguished
   " colorscheme hybrid
 	colorscheme t256
-	set ttimeoutlen=100
-
+  set timeout timeoutlen=1000 ttimeoutlen=100
+  
   " Preferences por GUI (MacVim & GVim)
   """"""""""""""""""""""
   if has('gui_running')

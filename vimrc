@@ -52,7 +52,7 @@ inoremap <C-Space> <C-X><C-O>
 let NERDTreeDirArrows=1
 let NERDTreeShowHidden=1
 let NERDTreeIgnore=['\.svn$', '\~$', '.DS_Store']
-let NERDTreeHijackNetrw = 0
+" let NERDTreeHijackNetrw = 0
 let NERDTreeMinimalUI=1
 let NERDTreeChDirMode = 2
 let g:NERDTreeMapJumpPrevSibling = ''

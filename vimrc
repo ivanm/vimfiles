@@ -182,6 +182,10 @@ endif
 "  Shortcuts 
 "///////////////////
 
+nnoremap <S-A> <C-A>
+nnoremap <S-X> <C-X>
+
+
 " Press ee to open current dir
 """"""""""""""""""""""
 :cnoremap ee e <c-r>=expand("%:h")<cr>/

@@ -40,3 +40,6 @@
 [submodule "bundle/nerdtree-ack"]
 	path = bundle/nerdtree-ack
 	url = https://github.com/tyok/nerdtree-ack.git
+[submodule "vim-expand-region"]
+	path = vim-expand-region
+	url = https://github.com/terryma/vim-expand-region

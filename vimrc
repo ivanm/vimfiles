@@ -125,10 +125,10 @@ if &t_Co >= 256 || has('gui_running')
   " colorscheme nightsky
 	" colorscheme twilight
   " colorscheme ps_color
-  " colorscheme jellybeans 
+  colorscheme jellybeans 
   " colorscheme distinguished
   " colorscheme hybrid
-	colorscheme t256
+	" colorscheme t256
   set timeout timeoutlen=1000 ttimeoutlen=100
   
   " Preferences por GUI (MacVim & GVim)
@@ -151,10 +151,13 @@ if &t_Co >= 256 || has('gui_running')
       "set lines=60 columns=300
       set vb
       set guioptions-=T
-      set guioptions-=R
+      set guioptions+=R
       set guioptions-=L
-      set guioptions-=r
+      set guioptions+=r
       set guioptions-=l
+      set guioptions-=b
+      set guioptions-=h
+
       " set transparency=1
       "set guifont=Monaco:h10
       set guifont=Anonymous\ Pro:h12
@@ -277,6 +280,10 @@ nnoremap <C-down>  <C-W><down>
 nnoremap <C-Q> :q!<CR>
 nnoremap <C-S> :w<CR>
 inoremap <C-S> <C-O>:w<CR>
+
+" HTML Helpers
+"""""""""""""""""""""""
+nnoremap <leader>.. vatd 
 
 " Syntastic
 """""""""""""""""""""""

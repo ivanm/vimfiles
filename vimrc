@@ -66,6 +66,11 @@ let g:netrw_banner = 0
 let g:ctrlp_working_path_mode = ''
 let g:ctrlp_dont_split = 'nerdtree'
 
+"Expand Region
+""""""""""""""""""""""
+map m <Plug>(expand_region_expand)
+map M <Plug>(expand_region_shrink)
+
 " Set tip when inserting
 """"""""""""""""""""""
 au InsertEnter * set cursorline
@@ -284,6 +289,8 @@ inoremap <C-S> <C-O>:w<CR>
 " HTML Helpers
 """""""""""""""""""""""
 nnoremap <leader>.. vatd 
+
+
 
 " Syntastic
 """""""""""""""""""""""

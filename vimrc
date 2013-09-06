@@ -27,10 +27,10 @@ set laststatus=2
 nnoremap - :
 set completeopt=menu,preview
 
-" Powerline settings
+"Airline settings
 """"""""""""""""""""""
-"let g:Powerline_symbols = 'compatible'
-let g:Powerline_symbols = 'fancy'
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_powerline_fonts = 1
 
 " SuperTab settings
 """"""""""""""""""""""
@@ -40,12 +40,6 @@ let g:SuperTabMappingBackward = "<s-c-tab>"
 
 inoremap <Nul> <C-X><C-O>
 inoremap <C-Space> <C-X><C-O>
-
-"autocmd FileType *
-" 	\ if &completefunc != '' |
-" 	\   call SuperTabChain(&completefunc, "<c-x><c-o>") |
-" 	\   call SuperTabSetDefaultCompletionType("<c-x><c-u>") |
-" 	\ endif
 
 " NERDTree Settings
 """"""""""""""""""""""
@@ -75,8 +69,6 @@ map M <Plug>(expand_region_shrink)
 """"""""""""""""""""""
 au InsertEnter * set cursorline
 au InsertLeave * set nocursorline 
-"au InsertEnter * set cursorcolumn
-"au InsertLeave * set nocursorcolumn
 
 " NO Folding
 """"""""""""""""""""""
@@ -108,11 +100,6 @@ set nobackup
 set noswapfile
 set hidden
 
-" Uncomment to force 256 colors
-""""""""""""""""""""""
-"Force 256
-"set t_Co=256
-
 " Avoid Closing preview buffer
 """"""""""""""""""""""
 autocmd InsertLeave * if pumvisible() == 0|pclose|endif
@@ -123,7 +110,7 @@ autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 
 if &t_Co >= 256 || has('gui_running')  
 
-  " Preferences por TERM
+  " Preferences for TERM
   " You may need CSAproxto load some colorschemes 
   """"""""""""""""""""""
 	" colorscheme wombat256
@@ -140,9 +127,9 @@ if &t_Co >= 256 || has('gui_running')
   """"""""""""""""""""""
   if has('gui_running')
    	" colorscheme twilight
-    "colorscheme jellybeans
+    colorscheme jellybeans
     " colorscheme distinguished
-		colorscheme chance-of-storm
+		" colorscheme chance-of-storm
     " colorscheme hybrid 
     " colorscheme wombat2 
     set lines=60 columns=300
@@ -162,11 +149,7 @@ if &t_Co >= 256 || has('gui_running')
       set guioptions-=l
       set guioptions-=b
       set guioptions-=h
-
-      " set transparency=1
-      " set guifont=Monaco:h10
-      " set guifont=Anonymous\ Pro:h12
-      set guifont=Source\ Code\ Pro:h11
+      set guifont=Source\ Code\ Pro\ for\ Powerline:h11
     endif
 
     " Preferences for Gvim only
@@ -179,7 +162,7 @@ if &t_Co >= 256 || has('gui_running')
       set guioptions-=L
       set guioptions-=r
       set guioptions-=l
-      set gfn=Monospace\ 9
+      " set gfn=Monospace\ 9
       "set gfn=Inconsolata\ 10
       set gfn=DejaVu\ Sans\ Mono\ 9 
     endif
@@ -235,13 +218,10 @@ nnoremap <Tab> i<Tab><ESC><right>
 nnoremap <S-Tab> <<<left> 
 vnoremap <Tab> >gv 
 vnoremap <S-Tab> <gv 
-"inoremap <S-Tab> <C-O><<
 
 " Tabbing shortcuts
 """""""""""""""""""""""
 nnoremap <C-T> :tabnew<CR>:e .<CR>
-"nnoremap <C-B> :tabprev<CR>
-"nnoremap <C-N> :tabnext<CR>
 noremap <C-K> :tabprev<CR>
 noremap <C-J> :tabnext<CR>
 
@@ -288,7 +268,7 @@ inoremap <C-S> <C-O>:w<CR>
 
 " HTML Helpers
 """""""""""""""""""""""
-nnoremap <leader>.. vat 
+nnoremap <leader>f vat 
 
 " Syntastic
 """""""""""""""""""""""
@@ -329,8 +309,6 @@ let g:tagbar_width = 30
 let g:tagbar_compact = 1
 let g:tagbar_singleclick = 1
 
-" nnoremap <silent> <F5> :TagbarToggle<CR>
-" inoremap <silent> <F5> <C-O>:TagbarToggle<CR>
 nnoremap <silent> <F5> :TagbarOpenAutoClose<CR>
 inoremap <silent> <F5> <C-O>:TagbarOpenAutoClose<CR>
 let g:tagbar_type_php = { 
@@ -345,9 +323,6 @@ let g:tagbar_type_php = {
 
 " F6 - Toggle Highlight 
 """""""""""""""""""""""
-"nnoremap <silent> <F6> :set nohlsearch<CR>
-"nnoremap <silent> <S-F6> :set hlsearch<CR>
-"nnoremap <F6> :set nohls<CR>:let @/ = ""<CR>:set hls<CR>
 nmap <F6> :set hls! <CR>
 " hit '/' highlights then enter search mode
 nnoremap / :set hlsearch<CR>/

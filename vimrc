@@ -164,8 +164,9 @@ if &t_Co >= 256 || has('gui_running')
       set guioptions-=h
 
       " set transparency=1
-      "set guifont=Monaco:h10
-      set guifont=Anonymous\ Pro:h12
+      " set guifont=Monaco:h10
+      " set guifont=Anonymous\ Pro:h12
+      set guifont=Source\ Code\ Pro:h11
     endif
 
     " Preferences for Gvim only
@@ -192,7 +193,6 @@ endif
 
 nnoremap <S-A> <C-A>
 nnoremap <S-X> <C-X>
-
 
 " Press ee to open current dir
 """"""""""""""""""""""
@@ -288,9 +288,7 @@ inoremap <C-S> <C-O>:w<CR>
 
 " HTML Helpers
 """""""""""""""""""""""
-nnoremap <leader>.. vatd 
-
-
+nnoremap <leader>.. vat 
 
 " Syntastic
 """""""""""""""""""""""

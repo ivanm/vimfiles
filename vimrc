@@ -7,6 +7,7 @@
 """"""""""""""""""""""
 let g:pathogen_disabled=["csapprox"]
 call pathogen#infect()
+call pathogen#helptags()
 
 " General Preferences
 """"""""""""""""""""""
@@ -26,10 +27,21 @@ set switchbuf=usetab
 set laststatus=2
 nnoremap - :
 set completeopt=menu,preview
+set so=14
 
-"Airline settings
+" Scripts
 """"""""""""""""""""""
-let g:airline#extensions#tabline#enabled = 1
+"Beautify HTML
+nnoremap <leader>bh :%!js-beautify --type html -s 2 -q -f -<CR>
+"Beautify JS
+nnoremap <leader>bj :%!js-beautify --type js -s 2 -q -f -<CR>
+"Retab to 2 spaces
+nnoremap <leader>bs :%s/\t/  /g<CR>:let @/ = ""<CR><C-O>:echo "No more tabs"
+
+" Airline settings
+""""""""""""""""""""""
+let g:airline#extensions#tabline#enabled = 0
+let g:airline#extensions#whitespace#enabled = 0
 let g:airline_powerline_fonts = 1
 
 " SuperTab settings
@@ -55,12 +67,12 @@ let g:nerdtree_tabs_open_on_gui_startup = 0
 let g:nerdtree_tabs_open_on_console_startup = 0
 let g:netrw_banner = 0
 
-"CtrlP Settings
+" CtrlP Settings
 """"""""""""""""""""""
 let g:ctrlp_working_path_mode = ''
 let g:ctrlp_dont_split = 'nerdtree'
 
-"Expand Region
+" Expand Region
 """"""""""""""""""""""
 map m <Plug>(expand_region_expand)
 map M <Plug>(expand_region_shrink)
@@ -68,11 +80,11 @@ map M <Plug>(expand_region_shrink)
 " Set tip when inserting
 """"""""""""""""""""""
 au InsertEnter * set cursorline
-au InsertLeave * set nocursorline 
+au InsertLeave * set nocursorline
 
 " NO Folding
 """"""""""""""""""""""
-set nofoldenable 
+set nofoldenable
 
 " Indentation preferences
 """"""""""""""""""""""
@@ -82,6 +94,8 @@ set shiftwidth=2
 set backspace=indent,eol,start
 " Comment to use tabs. Uncomment to use spaces
 set expandtab
+set listchars=tab:>-
+set list
 
 " Cosmetics
 """"""""""""""""""""""
@@ -91,7 +105,6 @@ set novisualbell
 set t_vb=
 set hlsearch
 set incsearch
-"set list "Show tabs?
 set showmatch
 
 " No nedded swap files and backups.
@@ -113,32 +126,20 @@ if &t_Co >= 256 || has('gui_running')
   " Preferences for TERM
   " You may need CSAproxto load some colorschemes 
   """"""""""""""""""""""
-	" colorscheme wombat256
-  " colorscheme nightsky
-	" colorscheme twilight
-  " colorscheme ps_color
   colorscheme jellybeans 
-  " colorscheme distinguished
-  " colorscheme hybrid
-	" colorscheme t256
   set timeout timeoutlen=1000 ttimeoutlen=100
   
   " Preferences por GUI (MacVim & GVim)
   """"""""""""""""""""""
   if has('gui_running')
-   	" colorscheme twilight
     colorscheme jellybeans
-    " colorscheme distinguished
-		" colorscheme chance-of-storm
-    " colorscheme hybrid 
-    " colorscheme wombat2 
     set lines=60 columns=300
     set sessionoptions+=resize,winpos
     
     " Preferences for MacVim only
     """"""""""""""""""""""
     if has('gui_macvim')
-		  let macvim_skip_cmd_opt_movement = 1
+      let macvim_skip_cmd_opt_movement = 1
       set clipboard=unnamed
       "set lines=60 columns=300
       set vb
@@ -162,8 +163,6 @@ if &t_Co >= 256 || has('gui_running')
       set guioptions-=L
       set guioptions-=r
       set guioptions-=l
-      " set gfn=Monospace\ 9
-      "set gfn=Inconsolata\ 10
       set gfn=DejaVu\ Sans\ Mono\ 9 
     endif
   endif
@@ -243,7 +242,7 @@ nnoremap <leader><leader>t  :tabnew %:h<CR>
 nnoremap <leader>e :e %:h<CR>
 nnoremap <leader>d :NERDTreeFocus<CR>
 
-"Resize shortcuts
+" Resize shortcuts
 """""""""""""""""""""""
 map <leader>+ 10<C-W>>
 map <leader>- 10<C-W><
@@ -258,17 +257,12 @@ nnoremap <C-right> <C-W><right>
 nnoremap <C-left>  <C-W><left>
 nnoremap <C-up> <C-W><up>
 nnoremap <C-down>  <C-W><down>
-"nnoremap <leader><leader> <C-W><C-W> 
 
 " Saving shortcuts
 """""""""""""""""""""""
 nnoremap <C-Q> :q!<CR>
 nnoremap <C-S> :w<CR>
 inoremap <C-S> <C-O>:w<CR>
-
-" HTML Helpers
-"""""""""""""""""""""""
-nnoremap <leader>f vat 
 
 " Syntastic
 """""""""""""""""""""""
@@ -282,7 +276,7 @@ let g:syntastic_mode_map={ 'mode': 'active',
 " Function keys 
 "///////////////////
 
-"F1 - Help
+" F1 - Help
 """""""""""""""""""""""
 
 " F2 -  NERDTreeToggle
@@ -312,18 +306,19 @@ let g:tagbar_singleclick = 1
 nnoremap <silent> <F5> :TagbarOpenAutoClose<CR>
 inoremap <silent> <F5> <C-O>:TagbarOpenAutoClose<CR>
 let g:tagbar_type_php = { 
-	    \ 'kinds' : [
-	        \ 'i:interfaces:0',
-	        \ 'c:clases:0',
-	        \ 'd:constant definitions:0',
-	        \ 'f:functions:0',
-	        \ 'j:javascript functions:0'
-	    \ ]
-	\ }
+      \ 'kinds' : [
+          \ 'i:interfaces:0',
+          \ 'c:clases:0',
+          \ 'd:constant definitions:0',
+          \ 'f:functions:0',
+          \ 'j:javascript functions:0'
+      \ ]
+  \ }
 
 " F6 - Toggle Highlight 
 """""""""""""""""""""""
-nmap <F6> :set hls! <CR>
+" nmap <F6> :set hls! <CR>
+nmap <silent> <F6> :let @/ = ""<CR>
 " hit '/' highlights then enter search mode
 nnoremap / :set hlsearch<CR>/
 
@@ -351,3 +346,10 @@ endfunction
 " F12 - Fix for pasting
 """""""""""""""""""""""
 set pastetoggle=<F12>
+
+" GUMGUM
+"""""""""""""""""""""""
+command! GGhref :%s/\(a\ href="[^"]\+"\|a\ href='[^']\+'\)/a\ href="#"/g | :%s/\(href="[^#][^"]\+"\|href='[^#][^']\+'\)/href="#"/gc
+command! GGaction :%s/\(action="[^"]\+"\|action='[^']\+'\)/action=""/g  
+command! GGscript :%s/\(<script[^>]*>\(\(<\/script>\)\@!\_.\)*<\/script>\)\|\(<noscript[^>]*>\(\(<\/noscript>\)\@!\_.\)*<\/noscript>\)//gc
+nnoremap t vat 

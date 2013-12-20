@@ -27,7 +27,9 @@ set switchbuf=usetab
 set laststatus=2
 nnoremap - :
 set completeopt=menu,preview
-set so=14
+" set so=0
+" set ss=1
+" set siso=30
 
 " Scripts
 """"""""""""""""""""""
@@ -37,6 +39,9 @@ nnoremap <leader>bh :%!js-beautify --type html -s 2 -q -f -<CR>
 nnoremap <leader>bj :%!js-beautify --type js -s 2 -q -f -<CR>
 "Retab to 2 spaces
 nnoremap <leader>bs :%s/\t/  /g<CR>:let @/ = ""<CR><C-O>:echo "No more tabs"
+"open
+nnoremap <leader>o :!open %<CR>
+
 
 " Airline settings
 """"""""""""""""""""""
@@ -143,13 +148,8 @@ if &t_Co >= 256 || has('gui_running')
       set clipboard=unnamed
       "set lines=60 columns=300
       set vb
+      set guioptions+=bRL 
       set guioptions-=T
-      set guioptions+=R
-      set guioptions-=L
-      set guioptions+=r
-      set guioptions-=l
-      set guioptions-=b
-      set guioptions-=h
       set guifont=Source\ Code\ Pro\ for\ Powerline:h11
     endif
 

@@ -37,11 +37,12 @@ set completeopt=menu,preview
 nnoremap <leader>bh :%!js-beautify --type html -s 2 -q -f -<CR>
 "Beautify JS
 nnoremap <leader>bj :%!js-beautify --type js -s 2 -q -f -<CR>
-"Retab to 2 spaces
-nnoremap <leader>bs :%s/\t/  /g<CR>:let @/ = ""<CR><C-O>:echo "No more tabs"
+"Retab
+nnoremap <leader>bt :%s/\t/  /g<CR>:let @/ = ""<CR><C-O>:echo "No more tabs"
 "open
 nnoremap <leader>o :!open %<CR>
-
+"Reindent
+nnoremap <leader>bi mfggVG=`fzz
 
 " Airline settings
 """"""""""""""""""""""
@@ -76,6 +77,12 @@ let g:netrw_banner = 0
 """"""""""""""""""""""
 let g:ctrlp_working_path_mode = ''
 let g:ctrlp_dont_split = 'nerdtree'
+
+" Indent Settings
+""""""""""""""""""""""
+let g:html_indent_inctags="head,html,body,p,head,table,tbody,div,script"
+let g:html_indent_script1="inc"
+let g:html_indent_style1="inc"
 
 " Expand Region
 """"""""""""""""""""""
@@ -169,6 +176,14 @@ if &t_Co >= 256 || has('gui_running')
 
 endif 
 
+" Preferences for Windows only
+""""""""""""""""""""""
+if has("win32")
+  set guifont=Consolas:h10
+  let g:airline_powerline_fonts = 0
+  let NERDTreeDirArrows=0
+endif
+
 "////////////////////
 "  Shortcuts 
 "///////////////////
@@ -257,6 +272,14 @@ nnoremap <C-right> <C-W><right>
 nnoremap <C-left>  <C-W><left>
 nnoremap <C-up> <C-W><up>
 nnoremap <C-down>  <C-W><down>
+
+" Stupid finger fix
+"""""""""""""""""""""""
+nnoremap . <Nop>
+
+" Faster switch
+"""""""""""""""""""""""
+nnoremap <Space> <C-W><C-W>
 
 " Saving shortcuts
 """""""""""""""""""""""

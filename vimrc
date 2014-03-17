@@ -11,7 +11,7 @@ call pathogen#helptags()
 
 " General Preferences
 """"""""""""""""""""""
-filetype plugin indent on 
+filetype plugin indent on
 set nocompatible 
 set background=dark 
 syntax on 
@@ -33,16 +33,19 @@ set completeopt=menu,preview
 
 " Scripts
 """"""""""""""""""""""
-"Beautify HTML
-nnoremap <leader>bh :%!js-beautify --type html -s 2 -q -f -<CR>
-"Beautify JS
-nnoremap <leader>bj :%!js-beautify --type js -s 2 -q -f -<CR>
-"Retab
-nnoremap <leader>bt :%s/\t/  /g<CR>:let @/ = ""<CR><C-O>:echo "No more tabs"
-"open
+"OSX open
 nnoremap <leader>o :!open %<CR>
-"Reindent
-nnoremap <leader>bi mfggVG=`fzz
+
+"Beautifiers/Uglifiers
+vmap <leader>bh :!js-beautify --type html -s 2 -q -f -<CR>
+vmap <leader>bj :%!js-beautify --type js -s 2 -q -f -<CR>
+vmap <leader>uc :!cleancss -b --skip-import --skip-advanced --skip-rebase<CR>ggVG='. 
+
+"Global Format
+command! Xselect norm! ggVG
+command! Xbeautifyhtml norm! ggVG :!js-beautify --type html -s 2 -q -f -<CR>
+command! Xbeautifyjs norm! ggVG :!js-beautify --type js -s 2 -q -f -<CR>
+command! Xindent norm! ggVG='.
 
 " Airline settings
 """"""""""""""""""""""
@@ -80,7 +83,7 @@ let g:ctrlp_dont_split = 'nerdtree'
 
 " Indent Settings
 """"""""""""""""""""""
-let g:html_indent_inctags="head,html,body,p,head,table,tbody,div,script"
+let g:html_indent_inctags="head,body"
 let g:html_indent_script1="inc"
 let g:html_indent_style1="inc"
 

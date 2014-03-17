@@ -214,6 +214,7 @@ nnoremap <C-X> "+dd
 vnoremap <C-X> "+d
 nnoremap <C-V> "+P
 inoremap <C-V> <left><C-O>"+p
+vnoremap <BS> "_d
 
 " Select All
 """"""""""""""""""""""

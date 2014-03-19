@@ -30,6 +30,7 @@ NeoBundle 'mileszs/ack.vim'
 NeoBundle 'jistr/vim-nerdtree-tabs'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'airblade/vim-gitgutter'
+NeoBundle 'tmhedberg/matchit'
 
 " NeoBundle init
 """"""""""""""""""""""

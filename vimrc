@@ -3,66 +3,147 @@
 " Iván Mayoral
 " https://github.com/ivanm/dotfiles
 "
-" Pathogen 
+" NeoBundle
 """"""""""""""""""""""
-let g:pathogen_disabled=["csapprox"]
-call pathogen#infect()
-call pathogen#helptags()
+if has('vim_starting')
+  set nocompatible
+  set runtimepath+=~/.vim/bundle/neobundle.vim/
+endif
+call neobundle#rc(expand('~/.vim/bundle/'))
+NeoBundleFetch 'Shougo/neobundle.vim'
+
+" Repos
+""""""""""""""""""""""
+NeoBundle 'godlygeek/csapprox'
+NeoBundle 'kien/ctrlp.vim'
+NeoBundle 'kien/tabman.vim'
+NeoBundle 'bling/vim-airline'
+NeoBundle 'terryma/vim-expand-region'
+NeoBundle 'scrooloose/nerdtree'
+NeoBundle 'scrooloose/syntastic'
+NeoBundle 'majutsushi/tagbar'
+NeoBundle 'terryma/vim-expand-region'
+NeoBundle 'tomtom/tcomment_vim'
+NeoBundle 'nathanaelkane/vim-indent-guides'
+NeoBundle 'ervandew/supertab'
+NeoBundle 'mileszs/ack.vim'
+NeoBundle 'jistr/vim-nerdtree-tabs'
+NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'airblade/vim-gitgutter'
+
+" NeoBundle init
+""""""""""""""""""""""
+filetype plugin indent on
+NeoBundleCheck
 
 " General Preferences
 """"""""""""""""""""""
-filetype plugin indent on
-set nocompatible 
-set background=dark 
 syntax on 
+let mapleader=","
+set background=dark 
 set encoding=utf-8
 set ruler
 set nowrap 
 set ignorecase 
 set number
 set showcmd
-let mapleader=","
 set mouse=a
 set switchbuf=usetab
 set laststatus=2
-nnoremap - :
 set completeopt=menu,preview
-" set so=0
-" set ss=1
-" set siso=30
+set nofoldenable
+set listchars=tab:>-
+set list
+set wildmenu
+set noerrorbells
+set novisualbell
+set t_vb=
+set hlsearch
+set incsearch
+set showmatch
+set smartindent
+set backspace=indent,eol,start
+set nobackup
+set noswapfile
+set hidden
 
-" Scripts
+" Indentation preferences
 """"""""""""""""""""""
-"OSX open
-nnoremap <leader>o :!open %<CR>
+set tabstop=2
+set shiftwidth=2
+" Comment to use tabs. Uncomment to use spaces
+set expandtab
 
-"Beautifiers/Uglifiers
+" Set tip when inserting
+""""""""""""""""""""""
+au InsertEnter * set cursorline
+au InsertLeave * set nocursorline
+
+" Avoid Closing preview buffer
+""""""""""""""""""""""
+au InsertLeave * if pumvisible() == 0|pclose|endif
+
+" Beautifiers/Uglifiers
+""""""""""""""""""""""
 vmap <leader>bh :!js-beautify --type html -s 2 -q -f -<CR>
 vmap <leader>bj :%!js-beautify --type js -s 2 -q -f -<CR>
 vmap <leader>uc :!cleancss -b --skip-import --skip-advanced --skip-rebase<CR>ggVG='. 
 
-"Global Format
+" X Global Functions 
+""""""""""""""""""""""
 command! Xselect norm! ggVG
 command! Xbeautifyhtml norm! ggVG :!js-beautify --type html -s 2 -q -f -<CR>
 command! Xbeautifyjs norm! ggVG :!js-beautify --type js -s 2 -q -f -<CR>
 command! Xindent norm! ggVG='.
+command! Xguides norm! :IndentGuidesToggle<CR>
+command! Xmousetoggle norm! :call ToggleMouse()<CR>
+command! Xclearsearch norm! :let @/ = ""<CR>
 
-" Airline settings
+" GUMGUM Functions
+"""""""""""""""""""""""
+command! GGhref :%s/\(a\ href="[^"]\+"\|a\ href='[^']\+'\)/a\ href="#"/g | :%s/\(href="[^#][^"]\+"\|href='[^#][^']\+'\)/href="#"/gc
+command! GGaction :%s/\(action="[^"]\+"\|action='[^']\+'\)/action=""/g  
+command! GGscript :%s/\(<script[^>]*>\(\(<\/script>\)\@!\_.\)*<\/script>\)\|\(<noscript[^>]*>\(\(<\/noscript>\)\@!\_.\)*<\/noscript>\)//gc
+
+" Plugin - Syntastic
+"""""""""""""""""""""""
+let g:syntastic_loc_list_height=3
+let g:syntastic_auto_loc_list=1
+let g:syntastic_mode_map={ 'mode': 'active',
+  \ 'active_filetypes': [],
+  \ 'passive_filetypes': ['html'] }
+
+" Plugin - Airline
 """"""""""""""""""""""
 let g:airline#extensions#tabline#enabled = 0
 let g:airline#extensions#whitespace#enabled = 0
 let g:airline_powerline_fonts = 1
 
-" SuperTab settings
+" Plugin - SuperTab 
 """"""""""""""""""""""
 let g:SuperTabDefaultCompletionType = "context"
 let g:SuperTabMappingForward ="<s-tab>"
 let g:SuperTabMappingBackward = "<s-c-tab>"
-
 inoremap <Nul> <C-X><C-O>
 inoremap <C-Space> <C-X><C-O>
 
-" NERDTree Settings
+" Plugin - TagBar
+"""""""""""""""""""""""
+let g:tagbar_left = 1
+let g:tagbar_width = 30
+let g:tagbar_compact = 1
+let g:tagbar_singleclick = 1
+let g:tagbar_type_php = { 
+      \ 'kinds' : [
+          \ 'i:interfaces:0',
+          \ 'c:clases:0',
+          \ 'd:constant definitions:0',
+          \ 'f:functions:0',
+          \ 'j:javascript functions:0'
+      \ ]
+  \ }
+
+" Plugin - NERDTree
 """"""""""""""""""""""
 let NERDTreeDirArrows=1
 let NERDTreeShowHidden=1
@@ -76,66 +157,29 @@ let g:nerdtree_tabs_open_on_gui_startup = 0
 let g:nerdtree_tabs_open_on_console_startup = 0
 let g:netrw_banner = 0
 
-" CtrlP Settings
+" Plugin - CtrlP
 """"""""""""""""""""""
 let g:ctrlp_working_path_mode = ''
 let g:ctrlp_dont_split = 'nerdtree'
 
-" Indent Settings
+" Plugin - Indent guides
+"""""""""""""""""""""""
+let g:indent_guides_guide_size = 2
+let g:indent_guides_start_level = 1
+
+" Plugin - Indent
 """"""""""""""""""""""
 let g:html_indent_inctags="head,body"
 let g:html_indent_script1="inc"
 let g:html_indent_style1="inc"
 
-" Expand Region
+" Plugin - Expand Region
 """"""""""""""""""""""
 map m <Plug>(expand_region_expand)
 map M <Plug>(expand_region_shrink)
 
-" Set tip when inserting
-""""""""""""""""""""""
-au InsertEnter * set cursorline
-au InsertLeave * set nocursorline
-
-" NO Folding
-""""""""""""""""""""""
-set nofoldenable
-
-" Indentation preferences
-""""""""""""""""""""""
-set smartindent
-set tabstop=2
-set shiftwidth=2
-set backspace=indent,eol,start
-" Comment to use tabs. Uncomment to use spaces
-set expandtab
-set listchars=tab:>-
-set list
-
-" Cosmetics
-""""""""""""""""""""""
-set wildmenu
-set noerrorbells
-set novisualbell
-set t_vb=
-set hlsearch
-set incsearch
-set showmatch
-
-" No nedded swap files and backups.
-""""""""""""""""""""""
-set nobackup
-set noswapfile
-set hidden
-
-" Avoid Closing preview buffer
-""""""""""""""""""""""
-autocmd InsertLeave * if pumvisible() == 0|pclose|endif
-
-"////////////////////
 " GUI/TERM  configs 
-"///////////////////
-
+""""""""""""""""""""""
 if &t_Co >= 256 || has('gui_running')  
 
   " Preferences for TERM
@@ -144,6 +188,23 @@ if &t_Co >= 256 || has('gui_running')
   colorscheme jellybeans 
   set timeout timeoutlen=1000 ttimeoutlen=100
   
+  "Fixing paste on Xterm
+  """"""""""""""""""""""
+  if !(has('gui_running'))
+    let &t_ti = &t_ti . "\e[?2004h"
+    let &t_te = "\e[?2004l" . &t_te
+    function XTermPasteBegin(ret)
+        set pastetoggle=<Esc>[201~
+        set paste
+        return a:ret
+    endfunction
+    map <expr> <Esc>[200~ XTermPasteBegin("i")
+    imap <expr> <Esc>[200~ XTermPasteBegin("")
+    cmap <Esc>[200~ <nop>
+    cmap <Esc>[201~ <nop>
+  endif
+
+
   " Preferences por GUI (MacVim & GVim)
   """"""""""""""""""""""
   if has('gui_running')
@@ -187,10 +248,12 @@ if has("win32")
   let NERDTreeDirArrows=0
 endif
 
-"////////////////////
-"  Shortcuts 
-"///////////////////
+" OSX open
+""""""""""""""""""""""
+nnoremap <leader>o :!open %<CR>
 
+" Shift Mappings
+""""""""""""""""""""""
 nnoremap <S-A> <C-A>
 nnoremap <S-X> <C-X>
 
@@ -222,7 +285,7 @@ nnoremap <leader>a ggVG
 
 " Duplicate
 """"""""""""""""""""""
-noremap <C-D> YP 
+noremap <C-D> "aY"aP 
 
 " Comment
 """"""""""""""""""""""
@@ -280,6 +343,7 @@ nnoremap <C-down>  <C-W><down>
 " Stupid finger fix
 """""""""""""""""""""""
 nnoremap . <Nop>
+nnoremap - :
 
 " Faster switch
 """""""""""""""""""""""
@@ -291,20 +355,11 @@ nnoremap <C-Q> :q!<CR>
 nnoremap <C-S> :w<CR>
 inoremap <C-S> <C-O>:w<CR>
 
-" Syntastic
+" Hit '/' highlights then enter search mode
 """""""""""""""""""""""
-let g:syntastic_loc_list_height=3
-let g:syntastic_auto_loc_list=1
-let g:syntastic_mode_map={ 'mode': 'active',
-  \ 'active_filetypes': [],
-  \ 'passive_filetypes': ['html'] }
+nnoremap / :set hlsearch<CR>/
+nnoremap <silent> <leader>/ :let @/ = ""<CR>
 
-"////////////////////
-" Function keys 
-"///////////////////
-
-" F1 - Help
-"""""""""""""""""""""""
 
 " F2 -  NERDTreeToggle
 """""""""""""""""""""""
@@ -317,49 +372,13 @@ inoremap <silent> <F2> <C-O>:NERDTreeTabsToggle<CR>
 """""""""""""""""""""""
 let g:tabman_toggle = '<F3>'
 
-" F4 - Indent guides
+" F4 - TagBar
 """""""""""""""""""""""
-let g:indent_guides_guide_size = 2
-let g:indent_guides_start_level = 1
-nnoremap <silent> <F4> :IndentGuidesToggle<CR>
+nnoremap <silent> <F4> :TagbarOpenAutoClose<CR>
+inoremap <silent> <F4> <C-O>:TagbarOpenAutoClose<CR>
 
-" F5 - TagBar
+" Misc
 """""""""""""""""""""""
-let g:tagbar_left = 1
-let g:tagbar_width = 30
-let g:tagbar_compact = 1
-let g:tagbar_singleclick = 1
-
-nnoremap <silent> <F5> :TagbarOpenAutoClose<CR>
-inoremap <silent> <F5> <C-O>:TagbarOpenAutoClose<CR>
-let g:tagbar_type_php = { 
-      \ 'kinds' : [
-          \ 'i:interfaces:0',
-          \ 'c:clases:0',
-          \ 'd:constant definitions:0',
-          \ 'f:functions:0',
-          \ 'j:javascript functions:0'
-      \ ]
-  \ }
-
-" F6 - Toggle Highlight 
-"""""""""""""""""""""""
-" nmap <F6> :set hls! <CR>
-nmap <silent> <F6> :let @/ = ""<CR>
-" hit '/' highlights then enter search mode
-nnoremap / :set hlsearch<CR>/
-
-" F7 Available
-"""""""""""""""""""""""
-" F8 Available
-"""""""""""""""""""""""
-" F9 Available
-"""""""""""""""""""""""
-" F10 Available
-"""""""""""""""""""""""
-" F11 - Fast Mouse Toggle
-"""""""""""""""""""""""
-nnoremap <F11> :call ToggleMouse()<CR>
 function! ToggleMouse()
 if &mouse == 'a'
   set mouse=
@@ -369,14 +388,3 @@ else
   echo "Mouse usage enabled"
 endif
 endfunction
-
-" F12 - Fix for pasting
-"""""""""""""""""""""""
-set pastetoggle=<F12>
-
-" GUMGUM
-"""""""""""""""""""""""
-command! GGhref :%s/\(a\ href="[^"]\+"\|a\ href='[^']\+'\)/a\ href="#"/g | :%s/\(href="[^#][^"]\+"\|href='[^#][^']\+'\)/href="#"/gc
-command! GGaction :%s/\(action="[^"]\+"\|action='[^']\+'\)/action=""/g  
-command! GGscript :%s/\(<script[^>]*>\(\(<\/script>\)\@!\_.\)*<\/script>\)\|\(<noscript[^>]*>\(\(<\/noscript>\)\@!\_.\)*<\/noscript>\)//gc
-nnoremap t vat 

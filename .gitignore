@@ -1,4 +1,3 @@
 .netrwhist
 tags
-bundle/
-!bundle/neobundle.vim/
+bundle/.neobundle/

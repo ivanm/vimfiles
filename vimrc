@@ -31,14 +31,19 @@ NeoBundle 'jistr/vim-nerdtree-tabs'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'airblade/vim-gitgutter'
 NeoBundle 'tmhedberg/matchit'
+NeoBundle 'lukaszb/vim-web-indent'
+NeoBundle 'editorconfig/editorconfig-vim'
 
-" NeoBundle init
+" Sudo checks
 """"""""""""""""""""""
-filetype plugin indent on
-NeoBundleCheck
+if ($SUDO_USER == '' || $USER == $SUDO_USER)
+  NeoBundle 'Shougo/unite.vim'
+  NeoBundleCheck
+endif
 
 " General Preferences
 """"""""""""""""""""""
+filetype plugin indent on
 syntax on 
 let mapleader=","
 set background=dark 

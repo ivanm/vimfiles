@@ -33,12 +33,9 @@ NeoBundle 'airblade/vim-gitgutter'
 NeoBundle 'tmhedberg/matchit'
 NeoBundle 'lukaszb/vim-web-indent'
 NeoBundle 'editorconfig/editorconfig-vim'
-
-" Sudo checks
-""""""""""""""""""""""
+NeoBundle 'shawncplus/phpcomplete.vim'
 if ($SUDO_USER == '' || $USER == $SUDO_USER)
   NeoBundle 'Shougo/unite.vim'
-  NeoBundleCheck
 endif
 
 " General Preferences
@@ -72,6 +69,40 @@ set backspace=indent,eol,start
 set nobackup
 set noswapfile
 set hidden
+
+"Autocomplete fallbacks
+""""""""""""""""""""""
+if has("lua")
+  NeoBundle 'Shougo/neocomplete.vim'
+  " Neocomplete
+  """"""""""""""""""""""
+  let g:neocomplete#enable_at_startup = 1
+  let g:neocomplete#disable_auto_complete =1
+  let g:neocomplete#enable_smart_case = 1
+  let g:neocomplete#enable_auto_delimiter = 1
+
+  let g:neocomplete#enable_auto_select = 1
+  let g:neocomplete#enable_refresh_always = 1
+
+  inoremap <expr><S-TAB>  pumvisible() ? "\<down>" : neocomplete#start_manual_complete()
+  inoremap <expr><TAB>  pumvisible() ? "\<down>" : "\<TAB>"
+  inoremap <expr><CR>  pumvisible() ? neocomplete#close_popup() : "\<CR>"
+  
+  if !exists('g:neocomplete#sources#omni#input_patterns')
+    let g:neocomplete#sources#omni#input_patterns = {}
+  endif
+  " let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
+
+else
+  NeoBundle 'ervandew/supertab'
+  " Plugin - SuperTab 
+  """"""""""""""""""""""
+  let g:SuperTabDefaultCompletionType = "context"
+  let g:SuperTabMappingForward ="<s-tab>"
+  let g:SuperTabMappingBackward = "<s-c-tab>"
+  inoremap <Nul> <C-X><C-O>
+  inoremap <C-Space> <C-X><C-O>
+endif
 
 " Indentation preferences
 """"""""""""""""""""""
@@ -394,3 +425,10 @@ else
   echo "Mouse usage enabled"
 endif
 endfunction
+
+
+" NeoBundle Check 
+""""""""""""""""""""""
+if ($SUDO_USER == '' || $USER == $SUDO_USER)
+  NeoBundleCheck
+endif

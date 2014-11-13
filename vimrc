@@ -41,13 +41,13 @@ endif
 " General Preferences
 """"""""""""""""""""""
 filetype plugin indent on
-syntax on 
+syntax on
 let mapleader=","
-set background=dark 
+set background=dark
 set encoding=utf-8
 set ruler
-set nowrap 
-set ignorecase 
+set nowrap
+set ignorecase
 set number
 set showcmd
 set mouse=a
@@ -87,7 +87,7 @@ if has("lua")
   inoremap <expr><S-TAB>  pumvisible() ? "\<down>" : neocomplete#start_manual_complete()
   inoremap <expr><TAB>  pumvisible() ? "\<down>" : "\<TAB>"
   inoremap <expr><CR>  pumvisible() ? neocomplete#close_popup() : "\<CR>"
-  
+
   if !exists('g:neocomplete#sources#omni#input_patterns')
     let g:neocomplete#sources#omni#input_patterns = {}
   endif
@@ -95,7 +95,7 @@ if has("lua")
 
 else
   NeoBundle 'ervandew/supertab'
-  " Plugin - SuperTab 
+  " Plugin - SuperTab
   """"""""""""""""""""""
   let g:SuperTabDefaultCompletionType = "context"
   let g:SuperTabMappingForward ="<s-tab>"
@@ -124,9 +124,9 @@ au InsertLeave * if pumvisible() == 0|pclose|endif
 """"""""""""""""""""""
 vmap <leader>bh :!js-beautify --type html -s 2 -q -f -<CR>
 vmap <leader>bj :%!js-beautify --type js -s 2 -q -f -<CR>
-vmap <leader>uc :!cleancss -b --skip-import --skip-advanced --skip-rebase<CR>ggVG='. 
+vmap <leader>uc :!cleancss -b --skip-import --skip-advanced --skip-rebase<CR>ggVG='.
 
-" X Global Functions 
+" X Global Functions
 """"""""""""""""""""""
 command! Xselect norm! ggVG
 command! Xbeautifyhtml norm! ggVG :!js-beautify --type html -s 2 -q -f -<CR>
@@ -139,7 +139,7 @@ command! Xclearsearch norm! :let @/ = ""<CR>
 " GUMGUM Functions
 """""""""""""""""""""""
 command! GGhref :%s/\(a\ href="[^"]\+"\|a\ href='[^']\+'\)/a\ href="#"/g | :%s/\(href="[^#][^"]\+"\|href='[^#][^']\+'\)/href="#"/gc
-command! GGaction :%s/\(action="[^"]\+"\|action='[^']\+'\)/action=""/g  
+command! GGaction :%s/\(action="[^"]\+"\|action='[^']\+'\)/action=""/g
 command! GGscript :%s/\(<script[^>]*>\(\(<\/script>\)\@!\_.\)*<\/script>\)\|\(<noscript[^>]*>\(\(<\/noscript>\)\@!\_.\)*<\/noscript>\)//gc
 
 " Plugin - Syntastic
@@ -156,7 +156,7 @@ let g:airline#extensions#tabline#enabled = 0
 let g:airline#extensions#whitespace#enabled = 0
 let g:airline_powerline_fonts = 1
 
-" Plugin - SuperTab 
+" Plugin - SuperTab
 """"""""""""""""""""""
 let g:SuperTabDefaultCompletionType = "context"
 let g:SuperTabMappingForward ="<s-tab>"
@@ -170,7 +170,7 @@ let g:tagbar_left = 1
 let g:tagbar_width = 30
 let g:tagbar_compact = 1
 let g:tagbar_singleclick = 1
-let g:tagbar_type_php = { 
+let g:tagbar_type_php = {
       \ 'kinds' : [
           \ 'i:interfaces:0',
           \ 'c:clases:0',
@@ -212,19 +212,19 @@ let g:html_indent_style1="inc"
 
 " Plugin - Expand Region
 """"""""""""""""""""""
-map m <Plug>(expand_region_expand)
-map M <Plug>(expand_region_shrink)
+vmap v <Plug>(expand_region_expand)
+vmap V <Plug>(expand_region_shrink)
 
-" GUI/TERM  configs 
+" GUI/TERM  configs
 """"""""""""""""""""""
-if &t_Co >= 256 || has('gui_running')  
+if &t_Co >= 256 || has('gui_running')
 
   " Preferences for TERM
-  " You may need CSAproxto load some colorschemes 
+  " You may need CSAproxto load some colorschemes
   """"""""""""""""""""""
-  colorscheme jellybeans 
+  colorscheme jellybeans
   set timeout timeoutlen=1000 ttimeoutlen=100
-  
+
   "Fixing paste on Xterm
   """"""""""""""""""""""
   if !(has('gui_running'))
@@ -248,7 +248,7 @@ if &t_Co >= 256 || has('gui_running')
     colorscheme jellybeans
     set lines=60 columns=300
     set sessionoptions+=resize,winpos
-    
+
     " Preferences for MacVim only
     """"""""""""""""""""""
     if has('gui_macvim')
@@ -256,7 +256,7 @@ if &t_Co >= 256 || has('gui_running')
       set clipboard=unnamed
       "set lines=60 columns=300
       set vb
-      set guioptions+=bRL 
+      set guioptions+=bRL
       set guioptions-=T
       set guifont=Source\ Code\ Pro\ for\ Powerline:h11
     endif
@@ -265,17 +265,17 @@ if &t_Co >= 256 || has('gui_running')
     """"""""""""""""""""""
     if has('gui_gtk')
       "set lines=70 columns=500
-      winpos 335 76 
+      winpos 335 76
       set guioptions-=T
       set guioptions-=R
       set guioptions-=L
       set guioptions-=r
       set guioptions-=l
-      set gfn=DejaVu\ Sans\ Mono\ 9 
+      set gfn=DejaVu\ Sans\ Mono\ 9
     endif
   endif
 
-endif 
+endif
 
 " Preferences for Windows only
 """"""""""""""""""""""
@@ -322,7 +322,7 @@ nnoremap <leader>a ggVG
 
 " Duplicate
 """"""""""""""""""""""
-noremap <C-D> "aY"aP 
+noremap <C-D> "aY"aP
 
 " Comment
 """"""""""""""""""""""
@@ -333,9 +333,9 @@ inoremap <C-L> <C-O>:TComment<CR>
 " Insert tabs wherever you are
 """""""""""""""""""""""
 nnoremap <Tab> i<Tab><ESC><right>
-nnoremap <S-Tab> <<<left> 
-vnoremap <Tab> >gv 
-vnoremap <S-Tab> <gv 
+nnoremap <S-Tab> <<<left>
+vnoremap <Tab> >gv
+vnoremap <S-Tab> <gv
 
 " Tabbing shortcuts
 """""""""""""""""""""""
@@ -427,7 +427,7 @@ endif
 endfunction
 
 
-" NeoBundle Check 
+" NeoBundle Check
 """"""""""""""""""""""
 if ($SUDO_USER == '' || $USER == $SUDO_USER)
   NeoBundleCheck

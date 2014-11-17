@@ -9,7 +9,7 @@ if has('vim_starting')
   set nocompatible
   set runtimepath+=~/.vim/bundle/neobundle.vim/
 endif
-call neobundle#rc(expand('~/.vim/bundle/'))
+call neobundle#begin(expand('~/.vim/bundle/'))
 NeoBundleFetch 'Shougo/neobundle.vim'
 
 " Repos
@@ -37,6 +37,7 @@ NeoBundle 'shawncplus/phpcomplete.vim'
 if ($SUDO_USER == '' || $USER == $SUDO_USER)
   NeoBundle 'Shougo/unite.vim'
 endif
+call neobundle#end()
 
 " General Preferences
 """"""""""""""""""""""
@@ -142,10 +143,17 @@ command! GGhref :%s/\(a\ href="[^"]\+"\|a\ href='[^']\+'\)/a\ href="#"/g | :%s/\
 command! GGaction :%s/\(action="[^"]\+"\|action='[^']\+'\)/action=""/g
 command! GGscript :%s/\(<script[^>]*>\(\(<\/script>\)\@!\_.\)*<\/script>\)\|\(<noscript[^>]*>\(\(<\/noscript>\)\@!\_.\)*<\/noscript>\)//gc
 
+" Plugin Ack
+"""""""""""""""""""""""
+:ab Ack LAck!
+let g:ackprg = 'ag --vimgrep'
+
 " Plugin - Syntastic
 """""""""""""""""""""""
-let g:syntastic_loc_list_height=3
-let g:syntastic_auto_loc_list=1
+let g:syntastic_php_checkers = ['php']
+let g:syntastic_php_phpcs_args = "--standard=PSR2 --encoding=utf-8"
+let g:syntastic_loc_list_height = 3
+let g:syntastic_auto_loc_list = 1
 let g:syntastic_mode_map={ 'mode': 'active',
   \ 'active_filetypes': [],
   \ 'passive_filetypes': ['html'] }

@@ -160,9 +160,17 @@ let g:syntastic_mode_map={ 'mode': 'active',
 
 " Plugin - Airline
 """"""""""""""""""""""
-let g:airline#extensions#tabline#enabled = 0
-let g:airline#extensions#whitespace#enabled = 0
+" let g:airline#extensions#tabline#enabled = 0
+" let g:airline#extensions#whitespace#enabled = 0
+" let g:airline#extensions#branch#enabled = 1
 let g:airline_powerline_fonts = 1
+let g:airline#extensions#default#layout = [
+  \ [ 'a', 'c' ],
+  \ ['b', 'x', 'y', 'z', 'warning' ]
+  \ ]
+
+
+
 
 " Plugin - SuperTab
 """"""""""""""""""""""
@@ -266,7 +274,7 @@ if &t_Co >= 256 || has('gui_running')
       set vb
       set guioptions+=bRL
       set guioptions-=T
-      set guifont=Source\ Code\ Pro\ for\ Powerline:h11
+      set guifont=Source\ Code\ Pro\ for\ Powerline:h10
     endif
 
     " Preferences for Gvim only

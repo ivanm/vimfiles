@@ -165,11 +165,17 @@ let g:syntastic_mode_map={ 'mode': 'active',
 " let g:airline#extensions#branch#enabled = 1
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#default#layout = [
-  \ [ 'a', 'c' ],
-  \ ['b', 'x', 'y', 'z', 'warning' ]
+  \ [ 'a' , 'c'],
+  \ [ 'x', 'y', 'z', 'warning']
   \ ]
 
+let g:airline#extensions#default#section_truncate_width = {
+    \ 'x': 70,
+    \ 'y': 70,
+    \ 'z': 70,
+    \ }
 
+" let g:airline#extensions#default#section_truncate_width = {}
 
 
 " Plugin - SuperTab
@@ -283,11 +289,14 @@ if &t_Co >= 256 || has('gui_running')
       "set lines=70 columns=500
       winpos 335 76
       set guioptions-=T
-      set guioptions-=R
-      set guioptions-=L
-      set guioptions-=r
-      set guioptions-=l
-      set gfn=DejaVu\ Sans\ Mono\ 9
+      " set guioptions-=R
+      " set guioptions-=L
+      " set guioptions-=r
+      " set guioptions-=l
+      set guioptions+=bRL
+      " set gfn=DejaVu\ Sans\ Mono\ 9
+      set gfn=Inconsolata\ for\ Powerline\ Medium\ 9
+      nnoremap <C-F> :promptrepl<CR>
     endif
   endif
 
@@ -329,8 +338,10 @@ vnoremap <C-C> "+y
 nnoremap <C-X> "+dd
 vnoremap <C-X> "+d
 nnoremap <C-V> "+P
+" nnoremap <C-V> "+gP
 inoremap <C-V> <left><C-O>"+p
 vnoremap <BS> "_d
+
 
 " Select All
 """"""""""""""""""""""
@@ -396,7 +407,7 @@ nnoremap <C-down>  <C-W><down>
 " Stupid finger fix
 """""""""""""""""""""""
 nnoremap . <Nop>
-nnoremap - :
+nnoremap ; :
 
 " Faster switch
 """""""""""""""""""""""

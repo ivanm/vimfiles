@@ -34,6 +34,7 @@ NeoBundle 'tmhedberg/matchit'
 NeoBundle 'lukaszb/vim-web-indent'
 NeoBundle 'editorconfig/editorconfig-vim'
 NeoBundle 'shawncplus/phpcomplete.vim'
+NeoBundle 'etnadji/vim-epub'
 if ($SUDO_USER == '' || $USER == $SUDO_USER)
   NeoBundle 'Shougo/unite.vim'
 endif
@@ -59,9 +60,7 @@ set nofoldenable
 set listchars=tab:>-
 set list
 set wildmenu
-set noerrorbells
-set novisualbell
-set t_vb=
+set noeb novb t_vb=
 set hlsearch
 set incsearch
 set showmatch

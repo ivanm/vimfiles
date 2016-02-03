@@ -38,7 +38,6 @@ NeoBundle 'etnadji/vim-epub'
 if ($SUDO_USER == '' || $USER == $SUDO_USER)
   NeoBundle 'Shougo/unite.vim'
 endif
-call neobundle#end()
 
 " General Preferences
 """"""""""""""""""""""
@@ -452,9 +451,12 @@ else
 endif
 endfunction
 
+call neobundle#end()
 
 " NeoBundle Check
 """"""""""""""""""""""
 if ($SUDO_USER == '' || $USER == $SUDO_USER)
   NeoBundleCheck
 endif
+
+

@@ -35,6 +35,10 @@ NeoBundle 'lukaszb/vim-web-indent'
 NeoBundle 'editorconfig/editorconfig-vim'
 NeoBundle 'shawncplus/phpcomplete.vim'
 NeoBundle 'etnadji/vim-epub'
+NeoBundle 'blueyed/vim-diminactive'
+NeoBundle 'vimwiki/vimwiki'
+NeoBundle 'beyondwords/vim-twig'
+NeoBundle 'mxw/vim-jsx'
 if ($SUDO_USER == '' || $USER == $SUDO_USER)
   NeoBundle 'Shougo/unite.vim'
 endif
@@ -235,6 +239,11 @@ let g:html_indent_style1="inc"
 vmap v <Plug>(expand_region_expand)
 vmap V <Plug>(expand_region_shrink)
 
+" Plugin - Vimwiki
+""""""""""""""""""""""
+nmap <Leader>k <Plug>VimwikiDiaryPrevDay
+nmap <Leader>j <Plug>VimwikiDiaryNextDay
+
 " GUI/TERM  configs
 """"""""""""""""""""""
 if &t_Co >= 256 || has('gui_running')
@@ -319,7 +328,7 @@ nnoremap <S-X> <C-X>
 
 " Press ee to open current dir
 """"""""""""""""""""""
-:cnoremap ee e <c-r>=expand("%:h")<cr>/
+:cnoremap eee e <c-r>=expand("%:h")<cr>/
 
 " Copying uses common C-C and C-X shortcuts
 """"""""""""""""""""""
@@ -404,7 +413,6 @@ nnoremap <C-down>  <C-W><down>
 
 " Stupid finger fix
 """""""""""""""""""""""
-nnoremap . <Nop>
 nnoremap ; :
 
 " Faster switch

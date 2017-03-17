@@ -10,5 +10,3 @@ Use it at your own risk.
   ln -s ~/.vim/vimrc ~/.vimrc
   ln -s ~/.vim/gvimrc ~/.gvimrc
   cd ~/.vim
-  git submodule init
-  git submodule update

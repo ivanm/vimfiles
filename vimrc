@@ -34,7 +34,7 @@ Plug 'blueyed/vim-diminactive'
 Plug 'vimwiki/vimwiki'
 Plug 'beyondwords/vim-twig'
 Plug 'mxw/vim-jsx'
-" Plug 'pangloss/vim-javascript'
+Plug 'pangloss/vim-javascript'
 if ($SUDO_USER == '' || $USER == $SUDO_USER)
   Plug 'Shougo/unite.vim'
 endif
@@ -242,7 +242,8 @@ if &t_Co >= 256 || has('gui_running')
   " Preferences for TERM
   " You may need CSAproxto load some colorschemes
   """"""""""""""""""""""
-  colorscheme jellybeans
+  " colorscheme jellybeans
+  colorscheme hybrid
   set timeout timeoutlen=1000 ttimeoutlen=100
 
   "Fixing paste on Xterm
@@ -265,7 +266,8 @@ if &t_Co >= 256 || has('gui_running')
   " Preferences por GUI (MacVim & GVim)
   """"""""""""""""""""""
   if has('gui_running')
-    colorscheme jellybeans
+    " colorscheme jellybeans
+    colorscheme hybrid
     set lines=60 columns=300
     set sessionoptions+=resize,winpos
 

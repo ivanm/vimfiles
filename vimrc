@@ -3,15 +3,6 @@
 " Iván Mayoral
 " https://github.com/ivanm/dotfiles
 "
-" NeoBundle
-""""""""""""""""""""""
-" if has('vim_starting')
-"   set nocompatible
-"   set runtimepath+=~/.vim/bundle/neobundle.vim/
-" endif
-" call neobundle#begin(expand('~/.vim/bundle/'))
-" NeoBundleFetch 'Shougo/neobundle.vim'
-
 call plug#begin('~/.vim/bundle')
 
 function! DoRemote(arg)

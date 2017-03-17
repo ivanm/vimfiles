@@ -5,42 +5,47 @@
 "
 " NeoBundle
 """"""""""""""""""""""
-if has('vim_starting')
-  set nocompatible
-  set runtimepath+=~/.vim/bundle/neobundle.vim/
-endif
-call neobundle#begin(expand('~/.vim/bundle/'))
-NeoBundleFetch 'Shougo/neobundle.vim'
+" if has('vim_starting')
+"   set nocompatible
+"   set runtimepath+=~/.vim/bundle/neobundle.vim/
+" endif
+" call neobundle#begin(expand('~/.vim/bundle/'))
+" NeoBundleFetch 'Shougo/neobundle.vim'
+
+call plug#begin('~/.vim/bundle')
+
+function! DoRemote(arg)
+  UpdateRemotePlugins
+endfunction
 
 " Repos
 """"""""""""""""""""""
-NeoBundle 'godlygeek/csapprox'
-NeoBundle 'kien/ctrlp.vim'
-NeoBundle 'kien/tabman.vim'
-NeoBundle 'bling/vim-airline'
-NeoBundle 'terryma/vim-expand-region'
-NeoBundle 'scrooloose/nerdtree'
-NeoBundle 'scrooloose/syntastic'
-NeoBundle 'majutsushi/tagbar'
-NeoBundle 'terryma/vim-expand-region'
-NeoBundle 'tomtom/tcomment_vim'
-NeoBundle 'nathanaelkane/vim-indent-guides'
-NeoBundle 'ervandew/supertab'
-NeoBundle 'mileszs/ack.vim'
-NeoBundle 'jistr/vim-nerdtree-tabs'
-NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'airblade/vim-gitgutter'
-NeoBundle 'tmhedberg/matchit'
-NeoBundle 'lukaszb/vim-web-indent'
-NeoBundle 'editorconfig/editorconfig-vim'
-NeoBundle 'shawncplus/phpcomplete.vim'
-NeoBundle 'etnadji/vim-epub'
-NeoBundle 'blueyed/vim-diminactive'
-NeoBundle 'vimwiki/vimwiki'
-NeoBundle 'beyondwords/vim-twig'
-NeoBundle 'mxw/vim-jsx'
+Plug 'godlygeek/csapprox'
+Plug 'kien/ctrlp.vim'
+Plug 'kien/tabman.vim'
+Plug 'bling/vim-airline'
+Plug 'terryma/vim-expand-region'
+Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/syntastic'
+Plug 'majutsushi/tagbar'
+Plug 'tomtom/tcomment_vim'
+Plug 'nathanaelkane/vim-indent-guides'
+Plug 'ervandew/supertab'
+Plug 'mileszs/ack.vim'
+Plug 'jistr/vim-nerdtree-tabs'
+Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
+Plug 'tmhedberg/matchit'
+Plug 'lukaszb/vim-web-indent'
+Plug 'editorconfig/editorconfig-vim'
+Plug 'shawncplus/phpcomplete.vim'
+Plug 'blueyed/vim-diminactive'
+Plug 'vimwiki/vimwiki'
+Plug 'beyondwords/vim-twig'
+Plug 'mxw/vim-jsx'
+" Plug 'pangloss/vim-javascript'
 if ($SUDO_USER == '' || $USER == $SUDO_USER)
-  NeoBundle 'Shougo/unite.vim'
+  Plug 'Shougo/unite.vim'
 endif
 
 " General Preferences
@@ -60,7 +65,7 @@ set switchbuf=usetab
 set laststatus=2
 set completeopt=menu,preview
 set nofoldenable
-set listchars=tab:>-
+set listchars=tab:>-,space:·
 set list
 set wildmenu
 set noeb novb t_vb=
@@ -76,7 +81,7 @@ set hidden
 "Autocomplete fallbacks
 """"""""""""""""""""""
 if has("lua")
-  NeoBundle 'Shougo/neocomplete.vim'
+  Plug 'Shougo/neocomplete.vim'
   " Neocomplete
   """"""""""""""""""""""
   let g:neocomplete#enable_at_startup = 1
@@ -87,7 +92,7 @@ if has("lua")
   let g:neocomplete#enable_auto_select = 1
   let g:neocomplete#enable_refresh_always = 1
 
-  inoremap <expr><S-TAB>  pumvisible() ? "\<down>" : neocomplete#start_manual_complete()
+inoremap <expr><S-TAB>  pumvisible() ? "\<down>" : neocomplete#start_manual_complete()
   inoremap <expr><TAB>  pumvisible() ? "\<down>" : "\<TAB>"
   inoremap <expr><CR>  pumvisible() ? neocomplete#close_popup() : "\<CR>"
 
@@ -97,9 +102,9 @@ if has("lua")
   " let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
 
 else
-  NeoBundle 'ervandew/supertab'
-  " Plugin - SuperTab
-  """"""""""""""""""""""
+  Plug 'ervandew/supertab'
+  " Plugin - S  uperTab
+  """"""""""" """""""""""
   let g:SuperTabDefaultCompletionType = "context"
   let g:SuperTabMappingForward ="<s-tab>"
   let g:SuperTabMappingBackward = "<s-c-tab>"
@@ -139,12 +144,6 @@ command! Xguides norm! :IndentGuidesToggle<CR>
 command! Xmousetoggle norm! :call ToggleMouse()<CR>
 command! Xclearsearch norm! :let @/ = ""<CR>
 
-" GUMGUM Functions
-"""""""""""""""""""""""
-command! GGhref :%s/\(a\ href="[^"]\+"\|a\ href='[^']\+'\)/a\ href="#"/g | :%s/\(href="[^#][^"]\+"\|href='[^#][^']\+'\)/href="#"/gc
-command! GGaction :%s/\(action="[^"]\+"\|action='[^']\+'\)/action=""/g
-command! GGscript :%s/\(<script[^>]*>\(\(<\/script>\)\@!\_.\)*<\/script>\)\|\(<noscript[^>]*>\(\(<\/noscript>\)\@!\_.\)*<\/noscript>\)//gc
-
 " Plugin Ack
 """""""""""""""""""""""
 :ab Ack LAck!
@@ -159,7 +158,7 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_mode_map={ 'mode': 'active',
   \ 'active_filetypes': [],
   \ 'passive_filetypes': ['html'] }
-let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_javascript_checkers=['eslint']
 
 " Plugin - Airline
 """"""""""""""""""""""
@@ -171,7 +170,7 @@ let g:airline#extensions#default#layout = [
   \ [ 'a' , 'c'],
   \ [ 'x', 'y', 'z', 'warning']
   \ ]
-
+ 
 let g:airline#extensions#default#section_truncate_width = {
     \ 'x': 70,
     \ 'y': 70,
@@ -280,7 +279,7 @@ if &t_Co >= 256 || has('gui_running')
     set sessionoptions+=resize,winpos
 
     " Preferences for MacVim only
-    """"""""""""""""""""""
+      """"""""""""""""""""""
     if has('gui_macvim')
       let macvim_skip_cmd_opt_movement = 1
       set clipboard=unnamed
@@ -293,7 +292,7 @@ if &t_Co >= 256 || has('gui_running')
 
     " Preferences for Gvim only
     """"""""""""""""""""""
-    if has('gui_gtk')
+      if has('gui_gtk')
       "set lines=70 columns=500
       winpos 335 76
       set guioptions-=T
@@ -460,12 +459,4 @@ else
 endif
 endfunction
 
-call neobundle#end()
-
-" NeoBundle Check
-""""""""""""""""""""""
-if ($SUDO_USER == '' || $USER == $SUDO_USER)
-  NeoBundleCheck
-endif
-
-
+call plug#end()

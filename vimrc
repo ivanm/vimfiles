@@ -244,6 +244,7 @@ if &t_Co >= 256 || has('gui_running')
   """"""""""""""""""""""
   " colorscheme jellybeans
   colorscheme hybrid
+  " colorscheme vendetta
   set timeout timeoutlen=1000 ttimeoutlen=100
 
   "Fixing paste on Xterm
@@ -268,6 +269,7 @@ if &t_Co >= 256 || has('gui_running')
   if has('gui_running')
     " colorscheme jellybeans
     colorscheme hybrid
+    " colorscheme vendetta
     set lines=60 columns=300
     set sessionoptions+=resize,winpos
 

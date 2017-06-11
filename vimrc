@@ -170,7 +170,6 @@ let g:airline#extensions#default#section_truncate_width = {
 
 " let g:airline#extensions#default#section_truncate_width = {}
 
-
 " Plugin - SuperTab
 """"""""""""""""""""""
 let g:SuperTabDefaultCompletionType = "context"
@@ -245,7 +244,13 @@ if &t_Co >= 256 || has('gui_running')
   " colorscheme jellybeans
   colorscheme hybrid
   " colorscheme vendetta
-  set timeout timeoutlen=1000 ttimeoutlen=100
+  " colorscheme onedark
+  " let g:onedark_termcolors=256
+  " if (has("termguicolors"))
+      " set termguicolors
+  " endif
+  let g:airline_theme='hybrid'
+  set timeout timeoutlen=1000 ttimeoutlen=0
 
   "Fixing paste on Xterm
   """"""""""""""""""""""
@@ -268,7 +273,8 @@ if &t_Co >= 256 || has('gui_running')
   """"""""""""""""""""""
   if has('gui_running')
     " colorscheme jellybeans
-    colorscheme hybrid
+    " colorscheme hybrid
+    " colorscheme onedark
     " colorscheme vendetta
     set lines=60 columns=300
     set sessionoptions+=resize,winpos

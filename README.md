@@ -1,4 +1,4 @@
-VIM Dotfiles
+Installation
 ========
 normal
 ```

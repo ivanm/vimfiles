@@ -1,0 +1,188 @@
+"
+" Personal vim configuration
+" Iván Mayoral
+"
+call plug#begin('~/.vim/bundle')
+
+function! DoRemote(arg)
+  UpdateRemotePlugins
+endfunction
+
+" Plugins
+""""""""""""""""""""""
+" visual
+Plug 'bling/vim-airline'
+" git
+Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
+" enhancements
+Plug 'editorconfig/editorconfig-vim'
+Plug 'terryma/vim-expand-region'
+Plug 'scrooloose/nerdtree'
+Plug 'tomtom/tcomment_vim'
+Plug 'tmhedberg/matchit'
+Plug 'ervandew/supertab'
+
+call plug#end()
+
+" General Preferences
+""""""""""""""""""""""
+filetype plugin indent on
+syntax on
+let mapleader=" "
+set encoding=utf-8
+set ruler
+set nowrap
+set ignorecase
+set number
+set showcmd
+set mouse=a
+set switchbuf=usetab
+set laststatus=2
+set completeopt=menu,preview
+set nofoldenable
+set listchars=tab:>-,space:·
+set list
+set wildmenu
+set noeb novb t_vb=
+set hlsearch
+set incsearch
+set showmatch
+set smartindent
+set backspace=indent,eol,start
+set nobackup
+set noswapfile
+set hidden
+set timeout timeoutlen=1000 ttimeoutlen=0
+
+" Indentation
+""""""""""""""""""""""
+set tabstop=4
+set shiftwidth=4
+" Comment to use tabs. Uncomment to use spaces
+set expandtab
+
+" Theme
+""""""""""""""""""""""
+colorscheme default
+
+" Set tip when inserting
+""""""""""""""""""""""
+au InsertEnter * set cursorline
+au InsertLeave * set nocursorline
+
+" Press ee to open current dir
+""""""""""""""""""""""
+:cnoremap eee e <c-r>=expand("%:h")<cr>/
+
+" Copying uses common C-C and C-X shortcuts
+""""""""""""""""""""""
+set clipboard=unnamed
+set history=500
+nnoremap dd "_dd
+nnoremap d "_d
+vnoremap <Del> "_d
+nnoremap <Del> "_x
+vnoremap x "_x
+nnoremap x "_x
+nnoremap <C-C> "+Y
+vnoremap <C-C> "+y
+nnoremap <C-X> "+dd
+vnoremap <C-X> "+d
+nnoremap <C-V> "+P
+" nnoremap <C-V> "+gP
+inoremap <C-V> <left><C-O>"+p
+vnoremap <BS> "_d
+
+" Duplicate
+""""""""""""""""""""""
+noremap <C-D> "aY"aP
+
+" Comment
+""""""""""""""""""""""
+nnoremap <silent> <C-L> :TComment<CR>
+vnoremap <C-L> :TComment<CR>
+inoremap <C-L> <C-O>:TComment<CR>
+
+" Insert tabs wherever you are
+"""""""""""""""""""""""
+nnoremap <Tab> i<Tab><ESC><right>
+nnoremap <S-Tab> <<<left>
+vnoremap <Tab> >gv
+vnoremap <S-Tab> <gv
+
+" Tabbing shortcuts
+"""""""""""""""""""""""
+nnoremap <C-T> :tabnew<CR>:e .<CR>
+noremap <C-K> :tabprev<CR>
+noremap <C-J> :tabnext<CR>
+noremap <C-S-Tab> :tabprev<CR>
+noremap <C-Tab> :tabnext<CR>
+nnoremap <C-Q> :q!<CR>
+
+" Moving shortcuts
+"""""""""""""""""""""""
+map <Esc>[1;5C <C-right>
+map <Esc>[1;5D <C-left>
+map <Esc>[1;5A <C-up>
+map <Esc>[1;5B <C-down>
+nnoremap <C-right> <C-W><right>
+nnoremap <C-left>  <C-W><left>
+nnoremap <C-up> <C-W><up>
+nnoremap <C-down>  <C-W><down>
+
+" Stupid finger fix
+"""""""""""""""""""""""
+nnoremap ; :
+
+" Hit '/' highlights then enter search mode
+"""""""""""""""""""""""
+nnoremap / :set hlsearch<CR>/
+
+" Leader Keys
+"""""""""""""""""""""""
+" Select All
+nnoremap <leader>a ggVG
+" Divide shortcuts
+nnoremap <leader><right> :rightbelow vnew .<CR><CR>
+nnoremap <leader><left>  :leftabove  vnew .<CR>
+nnoremap <leader><up> :leftabove  new .<CR>
+nnoremap <leader><down>  :rightbelow new .<CR>
+nnoremap <leader><leader><right> :rightbelow vnew %:h<CR><CR>
+nnoremap <leader><leader><left>  :leftabove  vnew %:h<CR>
+nnoremap <leader><leader><up> :leftabove  new %:h<CR>
+nnoremap <leader><leader><down>  :rightbelow new %:h<CR>
+" Explore
+nnoremap <leader>e :e %:h<CR>
+nnoremap <leader>d :NERDTreeFocus<CR>
+" Faster switch
+nnoremap <leader><CR> <C-W><C-W>
+" Clear search
+nnoremap <silent> <leader>/ :let @/ = ""<CR>
+
+" Plugin - Airline
+""""""""""""""""""""""
+" let g:airline_powerline_fonts = 1
+let g:airline#extensions#default#layout = [
+  \ [ 'a' , 'c'],
+  \ [ 'x', 'y', 'z', 'warning']
+  \ ]
+ 
+let g:airline#extensions#default#section_truncate_width = {
+    \ 'x': 70,
+    \ 'y': 70,
+    \ 'z': 70,
+    \ }
+
+" Plugin - Expand Region
+""""""""""""""""""""""
+vmap v <Plug>(expand_region_expand)
+vmap V <Plug>(expand_region_shrink)
+
+" Plugin - SuperTab
+""""""""""" """""""""""
+let g:SuperTabDefaultCompletionType = "context"
+let g:SuperTabMappingForward ="<s-tab>"
+let g:SuperTabMappingBackward = "<s-c-tab>"
+inoremap <Nul> <C-X><C-O>
+inoremap <C-Space> <C-X><C-O>

@@ -35,7 +35,7 @@ Plug 'mxw/vim-jsx'
 Plug 'pangloss/vim-javascript'
 Plug 'vim-vdebug/vdebug'
 Plug 'w0rp/ale'
-" Plug 'scrooloose/syntastic'
+Plug 'scrooloose/syntastic'
 
 call plug#end()
 
@@ -185,6 +185,8 @@ nnoremap <silent> <leader>/ :let @/ = ""<CR>
 " Vimwiki
 nmap <leader>k <Plug>VimwikiDiaryPrevDay
 nmap <leader>j <Plug>VimwikiDiaryNextDay
+" Ale
+nmap <silent> <leader>f :ALEFix<CR>
 
 " Plugin ALE
 """""""""""""""""""""""
@@ -230,13 +232,13 @@ let g:SuperTabMappingBackward = "<s-c-tab>"
 inoremap <Nul> <C-X><C-O>
 inoremap <C-Space> <C-X><C-O>
 
-" " Plugin - Syntastic
-" """""""""""""""""""""""
-" let g:syntastic_php_checkers = ['php']
-" let g:syntastic_php_phpcs_args = "--standard=PSR2 --encoding=utf-8"
-" let g:syntastic_loc_list_height = 3
-" let g:syntastic_auto_loc_list = 1
-" let g:syntastic_mode_map={ 'mode': 'active',
-"   \ 'active_filetypes': [],
-"   \ 'passive_filetypes': ['html'] }
-" let g:syntastic_javascript_checkers=['eslint']
+" Plugin - Syntastic
+"""""""""""""""""""""""
+let g:syntastic_php_checkers = ['php']
+let g:syntastic_php_phpcs_args = "--standard=PSR2 --encoding=utf-8"
+let g:syntastic_loc_list_height = 3
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_mode_map={ 'mode': 'active',
+  \ 'active_filetypes': [],
+  \ 'passive_filetypes': ['html'] }
+let g:syntastic_javascript_checkers=['eslint']

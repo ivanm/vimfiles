@@ -186,7 +186,7 @@ nnoremap <silent> <leader>/ :let @/ = ""<CR>
 nmap <leader>k <Plug>VimwikiDiaryPrevDay
 nmap <leader>j <Plug>VimwikiDiaryNextDay
 " Ale
-nmap <silent> <leader>f :ALEFix<CR>
+nmap <leader>f :ALEFix<CR>
 
 " Plugin ALE
 """""""""""""""""""""""

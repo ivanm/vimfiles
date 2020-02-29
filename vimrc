@@ -68,8 +68,8 @@ set nobackup
 set noswapfile
 set hidden
 set timeout timeoutlen=1000 ttimeoutlen=0
-set swapfile
-set dir=~/.swap-files
+" set swapfile
+" set dir=~/.swap-files
 
 " Indentation
 """"""""""""""""""""""
@@ -139,6 +139,7 @@ noremap <C-K> :tabprev<CR>
 noremap <C-J> :tabnext<CR>
 noremap <C-S-Tab> :tabprev<CR>
 noremap <C-Tab> :tabnext<CR>
+nnoremap <C-Q> :q!<CR>
 
 " Moving shortcuts
 """""""""""""""""""""""

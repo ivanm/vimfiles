@@ -11,7 +11,11 @@ endfunction
 " Plugins
 """"""""""""""""""""""
 " visual
+Plug 'godlygeek/csapprox'
+Plug 'tyrannicaltoucan/vim-quantum'
 Plug 'bling/vim-airline'
+Plug 'nathanaelkane/vim-indent-guides'
+Plug 'blueyed/vim-diminactive'
 " git
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
@@ -22,6 +26,49 @@ Plug 'scrooloose/nerdtree'
 Plug 'tomtom/tcomment_vim'
 Plug 'tmhedberg/matchit'
 Plug 'ervandew/supertab'
+Plug 'vimwiki/vimwiki'
+" webdev
+Plug 'shawncplus/phpcomplete.vim'
+Plug 'beyondwords/vim-twig'
+Plug 'lukaszb/vim-web-indent'
+Plug 'mxw/vim-jsx'
+Plug 'pangloss/vim-javascript'
+Plug 'vim-vdebug/vdebug'
+Plug 'w0rp/ale'
+Plug 'scrooloose/syntastic'
+
+" SuperTab/Neocomplete
+""""""""""""""""""""""
+if has("lua")
+  Plug 'Shougo/neocomplete.vim'
+  " Plugin - Neocomplete
+  """"""""""""""""""""""
+  let g:neocomplete#enable_at_startup = 1
+  let g:neocomplete#disable_auto_complete =1
+  let g:neocomplete#enable_smart_case = 1
+  let g:neocomplete#enable_auto_delimiter = 1
+
+  let g:neocomplete#enable_auto_select = 1
+  let g:neocomplete#enable_refresh_always = 1
+
+inoremap <expr><S-TAB>  pumvisible() ? "\<down>" : neocomplete#start_manual_complete()
+  inoremap <expr><TAB>  pumvisible() ? "\<down>" : "\<TAB>"
+  inoremap <expr><CR>  pumvisible() ? neocomplete#close_popup() : "\<CR>"
+
+  if !exists('g:neocomplete#sources#omni#input_patterns')
+    let g:neocomplete#sources#omni#input_patterns = {}
+  endif
+
+else
+  Plug 'ervandew/supertab'
+  " Plugin - SuperTab
+  """"""""""" """""""""""
+  let g:SuperTabDefaultCompletionType = "context"
+  let g:SuperTabMappingForward ="<s-tab>"
+  let g:SuperTabMappingBackward = "<s-c-tab>"
+  inoremap <Nul> <C-X><C-O>
+  inoremap <C-Space> <C-X><C-O>
+endif
 
 call plug#end()
 
@@ -54,6 +101,8 @@ set nobackup
 set noswapfile
 set hidden
 set timeout timeoutlen=1000 ttimeoutlen=0
+set swapfile
+set dir=~/.swap-files
 
 " Indentation
 """"""""""""""""""""""
@@ -64,7 +113,12 @@ set expandtab
 
 " Theme
 """"""""""""""""""""""
-colorscheme default
+set background=dark
+" set termguicolors
+let g:quantum_black=1
+let g:airline_theme='quantum'
+colorscheme quantum
+" colorscheme onedark
 
 " Set tip when inserting
 """"""""""""""""""""""
@@ -141,6 +195,8 @@ nnoremap / :set hlsearch<CR>/
 
 " Leader Keys
 """""""""""""""""""""""
+" Open Dir
+nnoremap <leader>o :!xdg-open %:h<CR>
 " Select All
 nnoremap <leader>a ggVG
 " Divide shortcuts
@@ -159,10 +215,21 @@ nnoremap <leader>d :NERDTreeFocus<CR>
 nnoremap <leader><CR> <C-W><C-W>
 " Clear search
 nnoremap <silent> <leader>/ :let @/ = ""<CR>
+" Vimwiki
+nmap <leader>k <Plug>VimwikiDiaryPrevDay
+nmap <leader>j <Plug>VimwikiDiaryNextDay
+" Ale
+nmap <leader>f :ALEFix<CR>
+
+" Plugin ALE
+"""""""""""""""""""""""
+let g:ale_fixers = { 'javascript': ['eslint', 'prettier']}
+" let g:ale_fix_on_save = 1
+let g:ale_javascript_prettier_use_local_config = 1
 
 " Plugin - Airline
 """"""""""""""""""""""
-" let g:airline_powerline_fonts = 1
+let g:airline_powerline_fonts = 1
 let g:airline#extensions#default#layout = [
   \ [ 'a' , 'c'],
   \ [ 'x', 'y', 'z', 'warning']
@@ -174,15 +241,29 @@ let g:airline#extensions#default#section_truncate_width = {
     \ 'z': 70,
     \ }
 
+" Plugin - Indent guides
+"""""""""""""""""""""""
+let g:indent_guides_guide_size = 2
+let g:indent_guides_start_level = 1
+
+" Plugin - Indent
+""""""""""""""""""""""
+let g:html_indent_inctags="head,body"
+let g:html_indent_script1="inc"
+let g:html_indent_style1="inc"
+
 " Plugin - Expand Region
 """"""""""""""""""""""
 vmap v <Plug>(expand_region_expand)
 vmap V <Plug>(expand_region_shrink)
 
-" Plugin - SuperTab
-""""""""""" """""""""""
-let g:SuperTabDefaultCompletionType = "context"
-let g:SuperTabMappingForward ="<s-tab>"
-let g:SuperTabMappingBackward = "<s-c-tab>"
-inoremap <Nul> <C-X><C-O>
-inoremap <C-Space> <C-X><C-O>
+" Plugin - Syntastic
+"""""""""""""""""""""""
+let g:syntastic_php_checkers = ['php']
+let g:syntastic_php_phpcs_args = "--standard=PSR2 --encoding=utf-8"
+let g:syntastic_loc_list_height = 3
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_mode_map={ 'mode': 'active',
+  \ 'active_filetypes': [],
+  \ 'passive_filetypes': ['html'] }
+let g:syntastic_javascript_checkers=['eslint']

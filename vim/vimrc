@@ -37,6 +37,39 @@ Plug 'vim-vdebug/vdebug'
 Plug 'w0rp/ale'
 Plug 'scrooloose/syntastic'
 
+" SuperTab/Neocomplete
+""""""""""""""""""""""
+if has("lua")
+  Plug 'Shougo/neocomplete.vim'
+  " Plugin - Neocomplete
+  """"""""""""""""""""""
+  let g:neocomplete#enable_at_startup = 1
+  let g:neocomplete#disable_auto_complete =1
+  let g:neocomplete#enable_smart_case = 1
+  let g:neocomplete#enable_auto_delimiter = 1
+
+  let g:neocomplete#enable_auto_select = 1
+  let g:neocomplete#enable_refresh_always = 1
+
+inoremap <expr><S-TAB>  pumvisible() ? "\<down>" : neocomplete#start_manual_complete()
+  inoremap <expr><TAB>  pumvisible() ? "\<down>" : "\<TAB>"
+  inoremap <expr><CR>  pumvisible() ? neocomplete#close_popup() : "\<CR>"
+
+  if !exists('g:neocomplete#sources#omni#input_patterns')
+    let g:neocomplete#sources#omni#input_patterns = {}
+  endif
+
+else
+  Plug 'ervandew/supertab'
+  " Plugin - SuperTab
+  """"""""""" """""""""""
+  let g:SuperTabDefaultCompletionType = "context"
+  let g:SuperTabMappingForward ="<s-tab>"
+  let g:SuperTabMappingBackward = "<s-c-tab>"
+  inoremap <Nul> <C-X><C-O>
+  inoremap <C-Space> <C-X><C-O>
+endif
+
 call plug#end()
 
 " General Preferences
@@ -68,8 +101,8 @@ set nobackup
 set noswapfile
 set hidden
 set timeout timeoutlen=1000 ttimeoutlen=0
-" set swapfile
-" set dir=~/.swap-files
+set swapfile
+set dir=~/.swap-files
 
 " Indentation
 """"""""""""""""""""""
@@ -196,7 +229,7 @@ let g:ale_javascript_prettier_use_local_config = 1
 
 " Plugin - Airline
 """"""""""""""""""""""
-" let g:airline_powerline_fonts = 1
+let g:airline_powerline_fonts = 1
 let g:airline#extensions#default#layout = [
   \ [ 'a' , 'c'],
   \ [ 'x', 'y', 'z', 'warning']
@@ -223,14 +256,6 @@ let g:html_indent_style1="inc"
 """"""""""""""""""""""
 vmap v <Plug>(expand_region_expand)
 vmap V <Plug>(expand_region_shrink)
-
-" Plugin - SuperTab
-""""""""""" """""""""""
-let g:SuperTabDefaultCompletionType = "context"
-let g:SuperTabMappingForward ="<s-tab>"
-let g:SuperTabMappingBackward = "<s-c-tab>"
-inoremap <Nul> <C-X><C-O>
-inoremap <C-Space> <C-X><C-O>
 
 " Plugin - Syntastic
 """""""""""""""""""""""

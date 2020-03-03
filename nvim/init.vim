@@ -33,9 +33,11 @@ Plug 'beyondwords/vim-twig'
 Plug 'lukaszb/vim-web-indent'
 Plug 'mxw/vim-jsx'
 Plug 'pangloss/vim-javascript'
-Plug 'vim-vdebug/vdebug'
 Plug 'w0rp/ale'
 Plug 'scrooloose/syntastic'
+if has("python3")
+  Plug 'vim-vdebug/vdebug'
+endif
 
 " SuperTab/Neocomplete
 """"""""""""""""""""""

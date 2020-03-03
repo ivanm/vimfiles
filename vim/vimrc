@@ -36,6 +36,9 @@ Plug 'vimwiki/vimwiki'
 " Plug 'vim-vdebug/vdebug'
 " Plug 'w0rp/ale'
 " Plug 'scrooloose/syntastic'
+" if has("python3")
+"   Plug 'vim-vdebug/vdebug'
+" endif
 
 " SuperTab/Neocomplete
 """"""""""""""""""""""

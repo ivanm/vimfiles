@@ -22,14 +22,16 @@ Download
 
 Direct Dowload Vim:
 ```
-curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-curl https://raw.githubusercontent.com/ivanm/vimfiles/master/vim/vimrc >  ~/.vimrc
-vim +PlugInstall
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim; \
+curl https://raw.githubusercontent.com/ivanm/vimfiles/master/vim/vimrc > ~/.vimrc; \
+vim +PlugInstall +qall
 ```
 
 Direct Dowload NeoVim:
 ```
-curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-curl https://raw.githubusercontent.com/ivanm/vimfiles/master/nvim/init.vim >  ~/./config/nvim/init.vim
-nvim +PlugInstall
+rm -rf ~/.config/nvim; \
+mkdir ~/.config/nvim; \
+curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim; \
+curl https://raw.githubusercontent.com/ivanm/vimfiles/master/nvim/init.vim >  ~/.config/nvim/init.vim; \
+nvim +PlugInstall +qall
 ```

@@ -25,7 +25,6 @@ Plug 'terryma/vim-expand-region'
 Plug 'scrooloose/nerdtree'
 Plug 'tomtom/tcomment_vim'
 Plug 'tmhedberg/matchit'
-Plug 'ervandew/supertab'
 Plug 'vimwiki/vimwiki'
 " webdev
 Plug 'shawncplus/phpcomplete.vim'
@@ -39,32 +38,18 @@ if has("python3")
   Plug 'vim-vdebug/vdebug'
 endif
 
-" SuperTab/Neocomplete
+" SuperTab/Deoplete
 """"""""""""""""""""""
-if has("lua")
-  Plug 'Shougo/neocomplete.vim'
-  " Plugin - Neocomplete
-  """"""""""""""""""""""
-  let g:neocomplete#enable_at_startup = 1
-  let g:neocomplete#disable_auto_complete =1
-  let g:neocomplete#enable_smart_case = 1
-  let g:neocomplete#enable_auto_delimiter = 1
-
-  let g:neocomplete#enable_auto_select = 1
-  let g:neocomplete#enable_refresh_always = 1
-
-inoremap <expr><S-TAB>  pumvisible() ? "\<down>" : neocomplete#start_manual_complete()
-  inoremap <expr><TAB>  pumvisible() ? "\<down>" : "\<TAB>"
-  inoremap <expr><CR>  pumvisible() ? neocomplete#close_popup() : "\<CR>"
-
-  if !exists('g:neocomplete#sources#omni#input_patterns')
-    let g:neocomplete#sources#omni#input_patterns = {}
+if has("python3")
+  if has('nvim')
+    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+  else
+    Plug 'Shougo/deoplete.nvim'
+    Plug 'roxma/nvim-yarp'
+    Plug 'roxma/vim-hug-neovim-rpc'
   endif
-
 else
   Plug 'ervandew/supertab'
-  " Plugin - SuperTab
-  """"""""""" """""""""""
   let g:SuperTabDefaultCompletionType = "context"
   let g:SuperTabMappingForward ="<s-tab>"
   let g:SuperTabMappingBackward = "<s-c-tab>"
@@ -108,8 +93,8 @@ set dir=~/.swap-files
 
 " Indentation
 """"""""""""""""""""""
-set tabstop=4
-set shiftwidth=4
+set tabstop=2
+set shiftwidth=2
 " Comment to use tabs. Uncomment to use spaces
 set expandtab
 
@@ -236,7 +221,7 @@ let g:airline#extensions#default#layout = [
   \ [ 'a' , 'c'],
   \ [ 'x', 'y', 'z', 'warning']
   \ ]
- 
+
 let g:airline#extensions#default#section_truncate_width = {
     \ 'x': 70,
     \ 'y': 70,
@@ -269,3 +254,32 @@ let g:syntastic_mode_map={ 'mode': 'active',
   \ 'active_filetypes': [],
   \ 'passive_filetypes': ['html'] }
 let g:syntastic_javascript_checkers=['eslint']
+
+" Plugin - Deoplete
+"""""""""""""""""""""""
+if has("python3")
+  let g:deoplete#enable_at_startup = 1
+
+  inoremap <silent><expr> <S-TAB>
+        \ pumvisible() ? "\<C-n>" :
+        \ <SID>check_back_space() ? "\<TAB>" :
+        \ deoplete#manual_complete()
+  function! s:check_back_space() abort "{{{
+    let col = col('.') - 1
+    return !col || getline('.')[col - 1]  =~ '\s'
+  endfunction"}}}
+
+  inoremap <expr><CR>  pumvisible() ? deoplete#close_popup() : "\<CR>"
+  inoremap <expr><TAB>  pumvisible() ? "\<down>" : "\<TAB>"
+
+  call deoplete#custom#option({
+        \ 'auto_complete': v:false,
+        \ 'smart_case': v:true,
+        \ })
+else
+  let g:SuperTabDefaultCompletionType = "context"
+  let g:SuperTabMappingForward ="<s-tab>"
+  let g:SuperTabMappingBackward = "<s-c-tab>"
+  inoremap <Nul> <C-X><C-O>
+  inoremap <C-Space> <C-X><C-O>
+endif

@@ -1,4 +1,5 @@
 .netrwhist
+.netrwbook
 tags
 vim/bundle/**
 vim/autoload/**

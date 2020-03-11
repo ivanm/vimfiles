@@ -22,7 +22,6 @@ Plug 'airblade/vim-gitgutter'
 " enhancements
 Plug 'editorconfig/editorconfig-vim'
 Plug 'terryma/vim-expand-region'
-Plug 'preservim/nerdtree'
 Plug 'tomtom/tcomment_vim'
 Plug 'tmhedberg/matchit'
 Plug 'vimwiki/vimwiki'
@@ -100,16 +99,11 @@ set background=dark
 let g:quantum_black=1
 let g:airline_theme='quantum'
 colorscheme quantum
-" colorscheme onedark
 
 " Set tip when inserting
 """"""""""""""""""""""
 au InsertEnter * set cursorline
 au InsertLeave * set nocursorline
-
-" Press ee to open current dir
-""""""""""""""""""""""
-:cnoremap eee e <c-r>=expand("%:h")<cr>/
 
 " Copying uses common C-C and C-X shortcuts
 """"""""""""""""""""""
@@ -163,50 +157,40 @@ map <Esc>[1;5D <C-left>
 map <Esc>[1;5A <C-up>
 map <Esc>[1;5B <C-down>
 nnoremap <C-right> <C-W><right>
-nnoremap <C-left>  <C-W><left>
+nnoremap <C-left> <C-W><left>
 nnoremap <C-up> <C-W><up>
-nnoremap <C-down>  <C-W><down>
+nnoremap <C-down> <C-W><down>
 
 " Stupid finger fix
 """""""""""""""""""""""
 nnoremap ; :
 
-" Hit '/' highlights then enter search mode
-"""""""""""""""""""""""
-nnoremap / :set hlsearch<CR>/
-
 " Leader Keys
 """""""""""""""""""""""
-" Open Dir
-nnoremap <leader>o :!xdg-open %:h<CR>
 " Select All
 nnoremap <leader>a ggVG
 " Divide shortcuts
-nnoremap <leader><right> :rightbelow vnew .<CR><CR>
+nnoremap <leader><right> :rightbelow vnew .<CR>
 nnoremap <leader><left>  :leftabove  vnew .<CR>
 nnoremap <leader><up> :leftabove  new .<CR>
 nnoremap <leader><down>  :rightbelow new .<CR>
-nnoremap <leader><leader><right> :rightbelow vnew %:h<CR><CR>
-nnoremap <leader><leader><left>  :leftabove  vnew %:h<CR>
-nnoremap <leader><leader><up> :leftabove  new %:h<CR>
-nnoremap <leader><leader><down>  :rightbelow new %:h<CR>
-" Explore
-nnoremap <leader>e :e %:h<CR>
-nnoremap <leader>d :NERDTreeFocus<CR>
+nnoremap <leader><leader><right> :rightbelow vnew %:p:h<CR>
+nnoremap <leader><leader><left>  :leftabove  vnew %:p:h<CR>
+nnoremap <leader><leader><up> :leftabove  new %:p:h<CR>
+nnoremap <leader><leader><down>  :rightbelow new %:p:h<CR>
+nnoremap <leader>e :e %:p:h<CR>
 " Faster switch
 nnoremap <leader><CR> <C-W><C-W>
-" Clear search
-nnoremap <silent> <leader>/ :let @/ = ""<CR>
 " Vimwiki
 nmap <leader>k <Plug>VimwikiDiaryPrevDay
 nmap <leader>j <Plug>VimwikiDiaryNextDay
 " Ale
 nmap <leader>f :ALEFix<CR>
 
-" Plugin NERDTree
+" Plugin Netrw
 """""""""""""""""""""""
-" let g:NERDTreeDirArrowExpandable = ' '
-" let g:NERDTreeDirArrowCollapsible = ' '
+let g:netrw_banner = 0
+let g:netrw_liststyle = 3
 
 " Plugin ALE
 """""""""""""""""""""""

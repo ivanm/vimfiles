@@ -67,7 +67,7 @@ set showcmd
 set mouse=a
 set switchbuf=usetab
 set laststatus=2
-set completeopt=menu,preview
+set completeopt=menu,preview,noinsert
 set nofoldenable
 set listchars=tab:>-,space:·
 set list

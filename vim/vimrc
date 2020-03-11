@@ -276,6 +276,7 @@ if has("python3")
         \ 'auto_complete': v:false,
         \ 'smart_case': v:true,
         \ })
+
 else
   let g:SuperTabDefaultCompletionType = "context"
   let g:SuperTabMappingForward ="<s-tab>"

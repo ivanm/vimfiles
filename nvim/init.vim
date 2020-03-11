@@ -50,11 +50,6 @@ if has("python3")
   endif
 else
   Plug 'ervandew/supertab'
-  let g:SuperTabDefaultCompletionType = "context"
-  let g:SuperTabMappingForward ="<s-tab>"
-  let g:SuperTabMappingBackward = "<s-c-tab>"
-  inoremap <Nul> <C-X><C-O>
-  inoremap <C-Space> <C-X><C-O>
 endif
 
 call plug#end()
@@ -208,6 +203,11 @@ nmap <leader>j <Plug>VimwikiDiaryNextDay
 " Ale
 nmap <leader>f :ALEFix<CR>
 
+" Plugin NERDTree
+"""""""""""""""""""""""
+" let g:NERDTreeDirArrowExpandable = ' '
+" let g:NERDTreeDirArrowCollapsible = ' '
+
 " Plugin ALE
 """""""""""""""""""""""
 let g:ale_fixers = { 'javascript': ['eslint', 'prettier']}
@@ -276,6 +276,7 @@ if has("python3")
         \ 'auto_complete': v:false,
         \ 'smart_case': v:true,
         \ })
+
 else
   let g:SuperTabDefaultCompletionType = "context"
   let g:SuperTabMappingForward ="<s-tab>"

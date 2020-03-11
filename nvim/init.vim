@@ -143,7 +143,7 @@ vnoremap <S-Tab> <gv
 
 " Tabbing shortcuts
 """""""""""""""""""""""
-nnoremap <C-T> :tabnew<CR>:e .<CR>
+nnoremap <C-T> :tabnew<CR>:e .<CR>gg
 noremap <C-K> :tabprev<CR>
 noremap <C-J> :tabnext<CR>
 noremap <C-S-Tab> :tabprev<CR>
@@ -170,15 +170,16 @@ nnoremap ; :
 " Select All
 nnoremap <leader>a ggVG
 " Divide shortcuts
-nnoremap <leader><right> :rightbelow vnew .<CR>
-nnoremap <leader><left>  :leftabove  vnew .<CR>
-nnoremap <leader><up> :leftabove  new .<CR>
-nnoremap <leader><down>  :rightbelow new .<CR>
-nnoremap <leader><leader><right> :rightbelow vnew %:p:h<CR>
-nnoremap <leader><leader><left>  :leftabove  vnew %:p:h<CR>
-nnoremap <leader><leader><up> :leftabove  new %:p:h<CR>
-nnoremap <leader><leader><down>  :rightbelow new %:p:h<CR>
-nnoremap <leader>e :e %:p:h<CR>
+nnoremap <leader><right> :rightbelow vnew .<CR>gg
+nnoremap <leader><left>  :leftabove  vnew .<CR>gg
+nnoremap <leader><up> :leftabove  new .<CR>gg
+nnoremap <leader><down>  :rightbelow new .<CR>gg
+nnoremap <leader><leader><right> :rightbelow vnew %:p:h<CR>gg
+nnoremap <leader><leader><left>  :leftabove  vnew %:p:h<CR>gg
+nnoremap <leader><leader><up> :leftabove  new %:p:h<CR>gg
+nnoremap <leader><leader><down>  :rightbelow new %:p:h<CR>gg
+nnoremap <leader>e :e .<CR>gg
+nnoremap <leader><leader>e :e %:p:h<CR>gg
 " Faster switch
 nnoremap <leader><CR> <C-W><C-W>
 " Vimwiki
@@ -186,11 +187,25 @@ nmap <leader>k <Plug>VimwikiDiaryPrevDay
 nmap <leader>j <Plug>VimwikiDiaryNextDay
 " Ale
 nmap <leader>f :ALEFix<CR>
+" Switch tabs
+noremap <leader>k :tabprev<CR>
+noremap <leader>j :tabnext<CR>
 
 " Plugin Netrw
 """""""""""""""""""""""
 let g:netrw_banner = 0
 let g:netrw_liststyle = 3
+let g:netrw_mousemaps= 0
+let g:netrw_fastbrowse = 0
+" Double click only on netrw
+augroup netrw_mapping
+  autocmd!
+  autocmd filetype netrw call NetrwMapping()
+augroup END
+function! NetrwMapping()
+  nmap <buffer> <2-leftmouse> <CR>
+  nmap <buffer> u -<ESC>
+endfunction
 
 " Plugin ALE
 """""""""""""""""""""""

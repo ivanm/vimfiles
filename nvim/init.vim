@@ -22,7 +22,7 @@ Plug 'airblade/vim-gitgutter'
 " enhancements
 Plug 'editorconfig/editorconfig-vim'
 Plug 'terryma/vim-expand-region'
-Plug 'scrooloose/nerdtree'
+Plug 'preservim/nerdtree'
 Plug 'tomtom/tcomment_vim'
 Plug 'tmhedberg/matchit'
 Plug 'vimwiki/vimwiki'

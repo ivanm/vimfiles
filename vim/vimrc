@@ -143,7 +143,7 @@ vnoremap <S-Tab> <gv
 
 " Tabbing shortcuts
 """""""""""""""""""""""
-nnoremap <C-T> :tabnew<CR>:e .<CR>gg
+nnoremap <C-T> :tabe .<CR>gg
 noremap <C-K> :tabprev<CR>
 noremap <C-J> :tabnext<CR>
 noremap <C-S-Tab> :tabprev<CR>
@@ -180,6 +180,8 @@ nnoremap <leader><leader><up> :leftabove  new %:p:h<CR>gg
 nnoremap <leader><leader><down>  :rightbelow new %:p:h<CR>gg
 nnoremap <leader>e :e .<CR>gg
 nnoremap <leader><leader>e :e %:p:h<CR>gg
+nnoremap <leader>t :tabe .<CR>gg
+nnoremap <leader><leader>t :tabe %:p:h<CR>gg
 " Faster switch
 nnoremap <leader><CR> <C-W><C-W>
 " Vimwiki

@@ -81,7 +81,7 @@ set backspace=indent,eol,start
 set nobackup
 set noswapfile
 set hidden
-set timeout timeoutlen=1000 ttimeoutlen=0
+set timeout timeoutlen=400 ttimeoutlen=0
 set swapfile
 set dir=~/.swap-files
 
@@ -191,7 +191,7 @@ nnoremap <leader><leader>e :e %:p:h<CR>gg
 nnoremap <leader>t :tabe .<CR>gg
 nnoremap <leader><leader>t :tabe %:p:h<CR>gg
 "Faster quit
-nnoremap <leader>qq :qa!<CR>
+nnoremap <leader>q :q!<CR>
 " Switch Tabs
 noremap <leader>k :tabprev<CR>
 noremap <leader>j :tabnext<CR>

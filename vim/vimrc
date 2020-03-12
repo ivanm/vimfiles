@@ -191,8 +191,7 @@ nnoremap <leader><leader>e :e %:p:h<CR>gg
 nnoremap <leader>t :tabe .<CR>gg
 nnoremap <leader><leader>t :tabe %:p:h<CR>gg
 "Faster quit
-nnoremap <leader>q :q!<CR>
-nnoremap <leader>qa :qa!<CR>
+nnoremap <leader>qq :qa!<CR>
 " Switch Tabs
 noremap <leader>k :tabprev<CR>
 noremap <leader>j :tabnext<CR>

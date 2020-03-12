@@ -100,6 +100,14 @@ let g:quantum_black=1
 let g:airline_theme='quantum'
 colorscheme quantum
 
+" Cursor change on mode
+""""""""""""""""""""""
+if !has('nvim')
+  let &t_SI = "\<esc>[5 q"
+  let &t_EI = "\<esc>[2 q"
+  let &t_SR = "\<esc>[3 q"
+endif
+
 " Set tip when inserting
 """"""""""""""""""""""
 au InsertEnter * set cursorline

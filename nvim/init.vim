@@ -190,16 +190,19 @@ nnoremap <leader>e :e .<CR>gg
 nnoremap <leader><leader>e :e %:p:h<CR>gg
 nnoremap <leader>t :tabe .<CR>gg
 nnoremap <leader><leader>t :tabe %:p:h<CR>gg
-" Faster switch
-nnoremap <leader><CR> <C-W><C-W>
-" Vimwiki
-nmap <leader>k <Plug>VimwikiDiaryPrevDay
-nmap <leader>j <Plug>VimwikiDiaryNextDay
-" Ale
-nmap <leader>f :ALEFix<CR>
-" Switch tabs
+"Faster quit
+nnoremap <leader>q :q!<CR>
+nnoremap <leader>qa :qa!<CR>
+" Switch Tabs
 noremap <leader>k :tabprev<CR>
 noremap <leader>j :tabnext<CR>
+" Switch Pane
+nnoremap <leader><CR> <C-W><C-W>
+" Ale
+nmap <leader>f :ALEFix<CR>
+" Vimwiki
+nmap <leader>wk <Plug>VimwikiDiaryPrevDay
+nmap <leader>wj <Plug>VimwikiDiaryNextDay
 
 " Plugin Netrw
 """""""""""""""""""""""

@@ -213,34 +213,34 @@ nmap <leader>wj <Plug>VimwikiDiaryNextDay
 command! -bang -nargs=? -complete=dir F
     \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
 
-" :Rg - ripgrep - searches everything
-command! -bang -nargs=* R
-  \ call fzf#vim#grep(
-  \   'rg -i --column --line-number --no-heading --color=always --hidden --no-ignore '.shellescape(<q-args>), 1,
-  \   fzf#vim#with_preview(), <bang>0)
-
-" :Rg - ripgrep - ignores .gitignore
-command! -bang -nargs=* Ri
+" :Rg - ripgrep 
+command! -bang -nargs=* Rg
   \ call fzf#vim#grep(
   \   'rg -i --column --line-number --no-heading --color=always --hidden '.shellescape(<q-args>), 1,
   \   fzf#vim#with_preview(), <bang>0)
 
-" " :Ag - grep
+" :Rga - ripgrep - all
+command! -bang -nargs=* Rga
+  \ call fzf#vim#grep(
+  \   'rg -i --column --line-number --no-heading --color=always --hidden --no-ignore '.shellescape(<q-args>), 1,
+  \   fzf#vim#with_preview(), <bang>0)
+
+" :Ack - ack
+command! -bang -nargs=* Ack
+  \ call fzf#vim#grep(
+  \   'ack --nogroup --column --color '.shellescape(<q-args>), 1,
+  \   fzf#vim#with_preview(), <bang>0)
+
+" :Ag - grep
 " command! -bang -nargs=* Grep
 "   \ call fzf#vim#grep(
 "   \   'grep --color -i -n -r '.shellescape(<q-args>), 1,
 "   \   fzf#vim#with_preview(), <bang>0)
-" "
-" " :Ag - ag
+
+" :Ag - ag
 " command! -bang -nargs=* Ag
 "   \ call fzf#vim#grep(
 "   \   'ag --nogroup --column --color '.shellescape(<q-args>), 1,
-"   \   fzf#vim#with_preview(), <bang>0)
-"
-" " :Ack - ack
-" command! -bang -nargs=* Ack
-"   \ call fzf#vim#grep(
-"   \   'ack --nogroup --column --color '.shellescape(<q-args>), 1,
 "   \   fzf#vim#with_preview(), <bang>0)
 
 " Plugin Netrw

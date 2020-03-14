@@ -200,17 +200,18 @@ noremap <leader>j :tabnext<CR>
 " Switch Pane
 nnoremap <leader><CR> <C-W><C-W>
 " Beautify
-nmap <leader>b :ALEFix<CR>
-" FZF
-nmap <leader>f :F<CR>
+nmap <leader>f :ALEFix<CR>
 " Vimwiki
 nmap <leader>wk <Plug>VimwikiDiaryPrevDay
 nmap <leader>wj <Plug>VimwikiDiaryNextDay
 
 " Plugin FZF
 """""""""""""""""""""""
+nnoremap <C-P> :P<CR>
+vnoremap <C-P> y:Rg <C-r>=fnameescape(@")<CR><CR>
+
 " :F - fzf
-command! -bang -nargs=? -complete=dir F
+command! -bang -nargs=? -complete=dir P
     \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
 
 " :Rg - ripgrep 

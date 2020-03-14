@@ -25,6 +25,8 @@ Plug 'terryma/vim-expand-region'
 Plug 'tomtom/tcomment_vim'
 Plug 'tmhedberg/matchit'
 Plug 'vimwiki/vimwiki'
+Plug 'junegunn/fzf'
+Plug 'junegunn/fzf.vim'
 " webdev
 Plug 'shawncplus/phpcomplete.vim'
 Plug 'beyondwords/vim-twig'
@@ -197,11 +199,49 @@ noremap <leader>k :tabprev<CR>
 noremap <leader>j :tabnext<CR>
 " Switch Pane
 nnoremap <leader><CR> <C-W><C-W>
-" Ale
-nmap <leader>f :ALEFix<CR>
+" Beautify
+nmap <leader>b :ALEFix<CR>
+" FZF
+nmap <leader>f :F<CR>
 " Vimwiki
 nmap <leader>wk <Plug>VimwikiDiaryPrevDay
 nmap <leader>wj <Plug>VimwikiDiaryNextDay
+
+" Plugin FZF
+"""""""""""""""""""""""
+" :F - fzf
+command! -bang -nargs=? -complete=dir F
+    \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
+
+" :Rg - ripgrep - searches everything
+command! -bang -nargs=* R
+  \ call fzf#vim#grep(
+  \   'rg -i --column --line-number --no-heading --color=always --hidden --no-ignore '.shellescape(<q-args>), 1,
+  \   fzf#vim#with_preview(), <bang>0)
+
+" :Rg - ripgrep - ignores .gitignore
+command! -bang -nargs=* Ri
+  \ call fzf#vim#grep(
+  \   'rg -i --column --line-number --no-heading --color=always --hidden '.shellescape(<q-args>), 1,
+  \   fzf#vim#with_preview(), <bang>0)
+
+" " :Ag - grep
+" command! -bang -nargs=* Grep
+"   \ call fzf#vim#grep(
+"   \   'grep --color -i -n -r '.shellescape(<q-args>), 1,
+"   \   fzf#vim#with_preview(), <bang>0)
+" "
+" " :Ag - ag
+" command! -bang -nargs=* Ag
+"   \ call fzf#vim#grep(
+"   \   'ag --nogroup --column --color '.shellescape(<q-args>), 1,
+"   \   fzf#vim#with_preview(), <bang>0)
+"
+" " :Ack - ack
+" command! -bang -nargs=* Ack
+"   \ call fzf#vim#grep(
+"   \   'ack --nogroup --column --color '.shellescape(<q-args>), 1,
+"   \   fzf#vim#with_preview(), <bang>0)
 
 " Plugin Netrw
 """""""""""""""""""""""

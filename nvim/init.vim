@@ -33,6 +33,8 @@ Plug 'beyondwords/vim-twig'
 Plug 'lukaszb/vim-web-indent'
 Plug 'mxw/vim-jsx'
 Plug 'pangloss/vim-javascript'
+Plug 'leafgarland/typescript-vim'
+Plug 'peitalin/vim-jsx-typescript'
 Plug 'w0rp/ale'
 Plug 'scrooloose/syntastic'
 if has("python3")

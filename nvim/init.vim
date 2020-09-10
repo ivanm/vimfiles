@@ -219,7 +219,7 @@ command! -bang -nargs=? -complete=dir P
 " :Rg - ripgrep 
 command! -bang -nargs=* Rg
   \ call fzf#vim#grep(
-  \   'rg -i --column --line-number --no-heading --color=always --hidden '.shellescape(<q-args>), 1,
+  \   'rg -i --column --line-number --no-heading --color=always '.shellescape(<q-args>), 1,
   \   fzf#vim#with_preview(), <bang>0)
 
 " :Rga - ripgrep - all
@@ -264,7 +264,7 @@ endfunction
 
 " Plugin ALE
 """""""""""""""""""""""
-let g:ale_fixers = { 'javascript': ['eslint', 'prettier']}
+let g:ale_fixers = { 'javascript': ['eslint', 'prettier'], 'typescript': ['eslint', 'prettier'] }
 " let g:ale_fix_on_save = 1
 let g:ale_javascript_prettier_use_local_config = 1
 

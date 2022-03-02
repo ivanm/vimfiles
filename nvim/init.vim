@@ -35,6 +35,8 @@ Plug 'mxw/vim-jsx'
 Plug 'pangloss/vim-javascript'
 Plug 'leafgarland/typescript-vim'
 Plug 'peitalin/vim-jsx-typescript'
+Plug 'tomlion/vim-solidity'
+Plug 'sohkai/syntastic-local-solhint'
 Plug 'posva/vim-vue'
 Plug 'w0rp/ale'
 Plug 'scrooloose/syntastic'
@@ -265,9 +267,27 @@ endfunction
 
 " Plugin ALE
 """""""""""""""""""""""
-let g:ale_fixers = { 'javascript': ['eslint', 'prettier'], 'typescript': ['eslint', 'prettier'] }
+let g:ale_linters = { 
+  \'javascript': ['eslint', 'flow-language-server'],
+  \'json': [''],
+  \'typescript': ['eslint'],
+  \'typescriptreact': ['eslint'],
+  \'vue': ['eslint'],
+  \'solidity': ['solc','solhint']
+  \}
+
+let g:ale_fixers = { 
+  \'javascript': ['eslint', 'prettier'],
+  \'json': ['prettier'],
+  \'typescript': ['eslint', 'prettier'],
+  \'typescriptreact': ['eslint', 'prettier'],
+  \'vue': ['eslint', 'prettier'],
+  \'solidity': ['prettier']
+  \}
+
 " let g:ale_fix_on_save = 1
 let g:ale_javascript_prettier_use_local_config = 1
+let g:ale_solidity_solc_executable = 'soljs'
 
 " Plugin - Airline
 """"""""""""""""""""""

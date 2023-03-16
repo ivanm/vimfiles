@@ -27,6 +27,7 @@ Plug 'tmhedberg/matchit'
 Plug 'vimwiki/vimwiki'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
+Plug 'andweeb/presence.nvim'
 " webdev
 Plug 'shawncplus/phpcomplete.vim'
 Plug 'beyondwords/vim-twig'
@@ -209,6 +210,17 @@ nmap <leader>f :ALEFix<CR>
 " Vimwiki
 nmap <leader>wk <Plug>VimwikiDiaryPrevDay
 nmap <leader>wj <Plug>VimwikiDiaryNextDay
+
+" Plugin Presence
+"""""""""""""""""""""""
+let g:presence_show_time = 0
+let g:presence_editing_text = "Editing files"
+let g:presence_file_explorer_text = "Browsing"
+let g:presence_git_commit_text = "Committing changes"
+let g:presence_plugin_manager_text = "Managing plugins"
+let g:presence_reading_text = "Reading files"
+let g:presence_workspace_text = "Working on a project"
+let g:presence_neovim_image_text   = "Neovim"
 
 " Plugin FZF
 """""""""""""""""""""""

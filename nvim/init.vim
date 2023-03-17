@@ -213,7 +213,7 @@ nmap <leader>wj <Plug>VimwikiDiaryNextDay
 
 " Plugin Presence
 """""""""""""""""""""""
-let g:presence_show_time = 0
+let g:presence_buttons = 0
 let g:presence_editing_text = "Editing files"
 let g:presence_file_explorer_text = "Browsing"
 let g:presence_git_commit_text = "Committing changes"
